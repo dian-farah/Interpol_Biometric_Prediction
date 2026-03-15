@@ -1,0 +1,6 @@
+client_name,matched_id,matched_name,tfidf_name_score,crime_cluster,crime_weight,refutation,raw_score,final_risk,final_tier,action,verdict,reason
+S. Nikitenko,NK-224TRezPqwzhQZ37exWxtX,SANAVBARI NIKITENKO,0.7377,Terrorism,1.0,0.0244,0.6901,0.0168,LOW RISK,"Pass — logged to audit trail, no action required",REFUTED,Cumulative biometric anomaly score too high
+Hasen Aksema,NK-35UbjkKkyMvvrxehBU4WkK,HASEN AMHAMED AKSEMA,0.8618,Weapons & Arms Trafficking,0.7,0.6044,0.6147,0.3715,REVIEW,Junior analyst flag — monitor and log for 30 days,REVIEW,Borderline — manual analyst review required
+Abdul Sambolotov,NK-4kBiCt6tGtxDDnaNdKvzfS,ABDUL SAMBOLATOV,0.7247,Terrorism,1.0,0.0634,0.7699,0.0488,LOW RISK,"Pass — logged to audit trail, no action required",REFUTED,Cumulative biometric anomaly score too high
+M. Al-Saeed,interpol-red-2008-39319,MARWAN M SAEED,0.5031,Weapons & Arms Trafficking,0.7,0.0,0.5262,0.0,AUTO-CLEARED,Transaction cleared — biometric hard gate triggered,AUTO-CLEARED,Gender mismatch — hard gate triggered
+Norbert Bialas,NK-2SjjvqaYqkvk965QDYYMmA,NORBERT BIALAS,1.0,Weapons & Arms Trafficking,0.7,0.9985,0.7,0.699,HIGH RISK,Senior analyst review required within 24 hours,HIGH RISK,Biometrics confirm identity match
