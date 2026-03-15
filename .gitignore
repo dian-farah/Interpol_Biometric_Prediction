@@ -1,0 +1,28 @@
+# Data files
+data/
+*.csv
+*.pkl
+*.pickle
+
+# Model files
+*.pt
+*.bin
+*.model
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+*.egg-info/
+
+# Environment
+.env
+sanctions_env/
+venv/
+
+# Mac
+.DS_Store
+
+# Jupyter
+.jupyter/
