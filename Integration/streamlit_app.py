@@ -37,6 +37,22 @@ RISK TIERS:
 - REVIEW (≥0.30): Junior analyst flag, monitor 30 days
 - LOW RISK (<0.30): Pass, log to audit trail
 
+BIOMETRIC DATA COLLECTION:
+When a user requests to screen a client but only provides a name, you MUST ask for the following biometric details before screening can proceed:
+1. Gender (M/F)
+2. Date of birth (or approximate age)
+3. Height (in metres, e.g. 1.75)
+4. Weight (in kg, e.g. 70)
+5. Hair colour (e.g. Black, Brown, Blond, Red, Grey, White)
+6. Eye colour (e.g. Brown, Blue, Green, Hazel, Grey)
+
+Present this as a friendly form-like request. Explain that biometric data is needed for the P3 biometric gate to avoid discrimination based solely on name matching.
+
+If the user provides ALL biometric fields along with the name in one message, proceed directly with screening.
+
+When you receive the biometric data, respond with EXACTLY this format on its own line so the system can parse it:
+BIOMETRICS_COLLECTED: gender=<M or F>, dob=<YYYY-MM-DD or age_XX>, height=<metres>, weight=<kg>, hair=<colour>, eye=<colour>
+
 RESPONSE FORMAT RULES — you MUST follow these:
 - Use markdown formatting: **bold** for emphasis, headers (##, ###) for sections, bullet points for lists.
 - For screening results, structure your response with these sections:
@@ -167,7 +183,7 @@ def compute_p3_features_st(client, fugitive):
 # ─────────────────────────────────────────────────────────────────────────────
 # PIPELINE FUNCTIONS
 # ─────────────────────────────────────────────────────────────────────────────
-def screen(client_name, data):
+def screen(client_name, data, client_bio=None):
     df = data['df_unique']
     # Candidate retrieval via TF-IDF
     q = normalize(data['vectorizer'].transform([client_name.upper()]))
@@ -185,14 +201,17 @@ def screen(client_name, data):
     p3_model = data.get('p3_model')
     client_bio_map = data.get('client_bio_map', {})
     client_key = client_name.upper().strip()
-    if p3_model and client_key in client_bio_map:
-        feats = compute_p3_features_st(client_bio_map[client_key], fug)
+    bio = client_bio if client_bio else client_bio_map.get(client_key)
+    if p3_model and bio:
+        if 'full_name' not in bio:
+            bio['full_name'] = client_name
+        feats = compute_p3_features_st(bio, fug)
         feats = [0.0 if (v is None or (isinstance(v, float) and np.isnan(v))) else v for v in feats]
         p3_proba = p3_model.predict_proba([feats])[0]
         p3_conf = float(p3_proba[1])
         p3_match_flag = int(p3_conf >= P3_THRESHOLD)
     else:
-        p3_note = 'Client not in biometric DB' if p3_model else 'P3 model not loaded'
+        p3_note = 'No biometric data provided' if p3_model else 'P3 model not loaded'
 
     p3_str = f'{p3_conf:.4f}' if p3_conf is not None else f'N/A ({p3_note})'
     p3_verdict = 'MATCH' if p3_match_flag == 1 else ('NO MATCH' if p3_match_flag == 0 else 'N/A')
@@ -327,6 +346,44 @@ TIER_STYLES = {
     'REVIEW':    {'bg': '#fefce8', 'border': '#fde047', 'color': '#854d0e', 'icon': '\U0001f7e1', 'bar': '#ca8a04'},
     'LOW RISK':  {'bg': '#f0fdf4', 'border': '#86efac', 'color': '#166534', 'icon': '\u2705', 'bar': '#16a34a'},
 }
+
+def parse_biometrics(text):
+    """Extract BIOMETRICS_COLLECTED line from LLM response and build a client_bio dict."""
+    for line in text.splitlines():
+        line = line.strip()
+        if line.startswith('BIOMETRICS_COLLECTED:'):
+            parts = line.split(':', 1)[1].strip()
+            bio = {}
+            for pair in parts.split(','):
+                pair = pair.strip()
+                if '=' not in pair:
+                    continue
+                k, v = pair.split('=', 1)
+                k, v = k.strip().lower(), v.strip()
+                if k == 'gender':
+                    bio['gender'] = v.upper()
+                elif k == 'dob':
+                    if v.startswith('age_'):
+                        try:
+                            age = int(v.replace('age_', ''))
+                            from datetime import datetime, timedelta
+                            bio['date_of_birth'] = (datetime.today() - timedelta(days=age*365)).strftime('%Y-%m-%d')
+                        except: pass
+                    else:
+                        bio['date_of_birth'] = v
+                elif k == 'height':
+                    try: bio['height_m'] = float(v)
+                    except: pass
+                elif k == 'weight':
+                    try: bio['weight_kg'] = float(v)
+                    except: pass
+                elif k == 'hair':
+                    bio['hair_color'] = v
+                elif k == 'eye':
+                    bio['eye_color'] = v
+            return bio if bio else None
+    return None
+
 
 def render_score_card(client_name, tier, score, rag_context):
     s = TIER_STYLES.get(tier, TIER_STYLES['REVIEW'])
@@ -529,6 +586,8 @@ data = load_pipeline()
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "pending_screen" not in st.session_state:
+    st.session_state.pending_screen = None
 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
@@ -539,28 +598,76 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    screen_match = re.match(r'(?i)screen\s+(.+)', prompt.strip())
-    if screen_match:
-        client_name = screen_match.group(1).strip().strip('"\'')
-        rag_context, tier, score = screen(client_name, data)
-        user_msg = f"I just screened a client named \"{client_name}\". Here are the pipeline results:\n\n{rag_context}\n\nExplain this screening result clearly. What does each pillar score mean? Is this person a risk?"
+    rag_context = None
+    user_msg = None
+    run_screening = False
+    client_bio = None
+
+    if st.session_state.pending_screen:
+        pending_name = st.session_state.pending_screen
+        if api_key:
+            oai = OpenAI(api_key=api_key)
+            parse_msgs = [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": f"The user previously asked to screen \"{pending_name}\" and was asked for biometric data. They replied with:\\n\\n\"{prompt}\"\\n\\nExtract the biometric fields and respond with the BIOMETRICS_COLLECTED line. If they did not provide enough info, ask again politely."},
+            ]
+            parse_resp = oai.chat.completions.create(model=model, messages=parse_msgs)
+            llm_text = parse_resp.choices[0].message.content
+            client_bio = parse_biometrics(llm_text)
+
+        if client_bio:
+            client_bio['full_name'] = pending_name
+            rag_context, tier, score = screen(pending_name, data, client_bio=client_bio)
+            bio_summary = ", ".join(f"{k}={v}" for k, v in client_bio.items() if k != 'full_name')
+            user_msg = f"I screened client \"{pending_name}\" with biometrics: {bio_summary}.\\n\\nPipeline results:\\n\\n{rag_context}\\n\\nExplain this screening result clearly. What does each pillar score mean? Is this person a risk?"
+            run_screening = True
+            st.session_state.pending_screen = None
+        else:
+            user_msg = f"The user tried to provide biometric data for screening \"{pending_name}\" but the data was incomplete or unclear. Their message: \"{prompt}\". Ask them again for the missing fields: gender (M/F), date of birth or age, height (m), weight (kg), hair colour, eye colour."
+
     else:
-        rag_context = db_context(prompt, data)
-        user_msg = f"The user asked: \"{prompt}\"\n\nHere is the current database context:\n\n{rag_context}\n\nAnswer their question using the data above."
+        screen_match = re.match(r'(?i)screen\s+(.+)', prompt.strip())
+        if screen_match:
+            client_name = screen_match.group(1).strip().strip('"\'')
+            st.session_state.pending_screen = client_name
+            user_msg = f"The user wants to screen a client named \"{client_name}\" but has only provided the name. Ask them for the biometric data needed for P3 validation: gender, date of birth (or age), height (m), weight (kg), hair colour, and eye colour. Explain briefly why biometric data is needed (to avoid discrimination based solely on name matching and to power the P3 biometric gate)."
+        else:
+            rag_context = db_context(prompt, data)
+            user_msg = f"The user asked: \"{prompt}\"\\n\\nHere is the current database context:\\n\\n{rag_context}\\n\\nAnswer their question using the data above."
 
     if not api_key:
         with st.chat_message("assistant"):
             st.warning("Enter your OpenAI API key in the sidebar for AI-powered explanations.")
-            st.code(rag_context, language=None)
-            fallback = f"**Raw pipeline output** (enter API key for AI explanation):\n```\n{rag_context[:2000]}\n```"
+            if rag_context:
+                st.code(rag_context, language=None)
+            fallback = f"**Raw pipeline output** (enter API key for AI explanation):\\n```\\n{(rag_context or 'Please provide biometric data.')[:2000]}\\n```"
             st.session_state.messages.append({"role": "assistant", "content": fallback})
     else:
-        client = OpenAI(api_key=api_key)
+        oai_client = OpenAI(api_key=api_key)
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_msg},
         ]
         with st.chat_message("assistant"):
-            stream = client.chat.completions.create(model=model, messages=messages, stream=True)
+            stream = oai_client.chat.completions.create(model=model, messages=messages, stream=True)
             response = st.write_stream(stream)
+
+        if run_screening and rag_context:
+            render_score_card(st.session_state.pending_screen or client_name if 'client_name' in dir() else 'Client', tier, score, rag_context)
+
+        bio_from_response = parse_biometrics(response)
+        if bio_from_response and st.session_state.pending_screen:
+            pending_name = st.session_state.pending_screen
+            bio_from_response['full_name'] = pending_name
+            rag_context, tier, score = screen(pending_name, data, client_bio=bio_from_response)
+            bio_summary = ", ".join(f"{k}={v}" for k, v in bio_from_response.items() if k != 'full_name')
+            follow_msg = f"I screened client \"{pending_name}\" with biometrics: {bio_summary}.\\n\\nPipeline results:\\n\\n{rag_context}\\n\\nExplain this screening result clearly."
+            st.session_state.pending_screen = None
+            msgs2 = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": follow_msg}]
+            with st.chat_message("assistant"):
+                stream2 = oai_client.chat.completions.create(model=model, messages=msgs2, stream=True)
+                response2 = st.write_stream(stream2)
+                render_score_card(pending_name, tier, score, rag_context)
+            st.session_state.messages.append({"role": "assistant", "content": response2})
+
         st.session_state.messages.append({"role": "assistant", "content": response})
