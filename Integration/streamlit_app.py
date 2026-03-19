@@ -71,19 +71,36 @@ RESPONSE FORMAT RULES — you MUST follow these:
 def load_pipeline():
     # ── Directory config (mirrors notebook Cell 4) ────────────────────────────
     repo_root  = os.path.abspath(os.path.join(os.getcwd(), '..'))
-    p1_dir     = os.path.join(repo_root, 'outputs')
-    p2_dir     = os.path.join(repo_root, 'Pillar 2 (Crime Severity)', 'outputs')
-    p3_dir     = os.path.join(repo_root, 'Pillar 3 (Biometric Prediction)')
-    p3_out_dir = os.path.join(p3_dir, 'output')
-    p4_dir     = os.path.join(repo_root, 'Pillar 4 (GCN and Graphsage)')
-    p4_out_dir = os.path.join(p4_dir, 'outputs')
-    p5_dir     = os.path.join(repo_root, 'Pillar 5 (Visual)', 'outputs')
 
-    fugitive_csv      = os.path.join(p4_dir, 'crime_analysis_results_aft_transformer_ner.csv')
-    p1_vectorizer_pkl = os.path.join(p1_dir, 'pillar1_name_vectorizer.pkl')
-    p1_embeddings_pkl = os.path.join(p1_dir, 'pillar1_name_embeddings.pkl')
-    p2_crime_csv      = os.path.join(p2_dir, 'crime_categorisation_export.csv')
-    p4_links_csv      = os.path.join(p4_out_dir, 'top_new_links_all.csv')
+    def _res(*candidates):
+        for p in candidates:
+            if os.path.exists(p):
+                return p
+        return candidates[-1]
+
+    p1_base    = os.path.join(repo_root, 'Pillar 1 (Identity Resolution)')
+    p2_base    = os.path.join(repo_root, 'Pillar 2 (Crime Severity)')
+    p3_base    = os.path.join(repo_root, 'Pillar 3 (Biometric Prediction)')
+    p4_base    = os.path.join(repo_root, 'Pillar 4 (GCN and Graphsage)')
+    p4_out_dir = os.path.join(p4_base, 'outputs')
+
+    fugitive_csv = os.path.join(p4_base, 'crime_analysis_results_aft_transformer_ner.csv')
+
+    p1_vectorizer_pkl = _res(
+        os.path.join(p1_base, 'outputs', 'pillar1_name_vectorizer.pkl'),
+        os.path.join(p1_base, 'output',  'pillar1_name_vectorizer.pkl'),
+        os.path.join(repo_root, 'outputs', 'pillar1_name_vectorizer.pkl'),
+    )
+    p1_embeddings_pkl = _res(
+        os.path.join(p1_base, 'outputs', 'pillar1_name_embeddings.pkl'),
+        os.path.join(p1_base, 'output',  'pillar1_name_embeddings.pkl'),
+        os.path.join(repo_root, 'outputs', 'pillar1_name_embeddings.pkl'),
+    )
+    p2_crime_csv = _res(
+        os.path.join(p2_base, 'crime_categorisation_export.csv'),
+        os.path.join(p2_base, 'outputs', 'crime_categorisation_export.csv'),
+    )
+    p4_links_csv = os.path.join(p4_out_dir, 'top_new_links_all.csv')
 
     # P2: Crime categorisation
     df_crime = pd.read_csv(p2_crime_csv)
@@ -119,7 +136,11 @@ def load_pipeline():
         linkage_score_map = {}
 
     # P3: Biometric model + client database
-    p3_model_pkl = os.path.join(p3_out_dir, 'ensemble_voting.pkl')
+    p3_model_pkl = _res(
+        os.path.join(repo_root, 'outputs', 'pillar3_ensemble_voting.pkl'),
+        os.path.join(p3_base, 'output', 'ensemble_voting.pkl'),
+        os.path.join(p3_base, 'outputs', 'ensemble_voting.pkl'),
+    )
     p3_model = None
     if os.path.exists(p3_model_pkl):
         with open(p3_model_pkl, 'rb') as f:

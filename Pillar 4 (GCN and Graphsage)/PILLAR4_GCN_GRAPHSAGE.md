@@ -110,8 +110,6 @@ Pillar 4 produces reusable artifacts for downstream integration:
 - `outputs/top_new_links_all.csv`
   - Columns: `source_id`, `source_name`, `target_id`, `target_name`, `score`, `rank`
   - Full-coverage top-3 new link predictions for every fugitive. Used by the integration pipeline to compute the rank-weighted Pillar 4 score.
-- `outputs/pillar1_tfidf.pkl`
-  - Contains the fitted `TfidfVectorizer`, pre-computed L2-normalised name embeddings (sparse matrix), and the corresponding `fugitive_ids` ordering. Shared with the integration notebook so Pillar 1 does not need to rebuild embeddings.
 - `outputs/models/graphsage_link_predictor.pkl`
 - `outputs/models/gcn_link_predictor.pkl`
 - `outputs/models/linkage_inference_meta.pkl`
