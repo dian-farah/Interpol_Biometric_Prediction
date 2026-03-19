@@ -23,13 +23,13 @@ P3_THRESHOLD = 0.5
 SYSTEM_PROMPT = """You are an AI analyst for the INTERPOL Risk Intelligence System (CS610 project).
 You help compliance officers understand screening results and explore the fugitive database.
 
-PIPELINE OVERVIEW (P3 runs FIRST as a biometric gate):
-- Pillar 3 (gate): Biometric prediction via ensemble voting (LR + RF + XGBoost). Compares client vs matched fugitive on 7 features: name_similarity, age_difference, same_gender, height_difference, weight_difference, same_hair_colour, same_eye_colour. Outputs confidence (0-1). If below 0.5, scoring stops early (LOW RISK).
+PIPELINE OVERVIEW (P3 is a biometric confirmation check):
+- Pillar 3 (confirmation): Biometric prediction via ensemble voting (LR + RF + XGBoost). Compares client vs matched fugitive on 7 features: name_similarity, age_difference, same_gender, height_difference, weight_difference, same_hair_colour, same_eye_colour. Outputs confidence (0-1). If >= 0.5 (MATCH), the identity is biometrically confirmed → immediate CRITICAL escalation. If < 0.5 (MISMATCH), biometrics are inconclusive → proceed with full multi-pillar scoring.
 - Pillar 1 (40%): TF-IDF char n-gram cosine similarity for identity resolution
 - Pillar 2 (30%): Crime severity from categorisation export (terrorism=1.0, homicide=0.9, sexual crime=0.8, armed formation/assault/narcotics=0.7, financial crime=0.5)
 - Pillar 4 (20%): Hidden linkage from GraphSAGE link predictions (top-3 linked fugitives, rank weights normalised to sum to 1.0)
 - Pillar 5 (10%): Visual similarity via CLIP (placeholder 0.5 until delivered)
-- Final Risk = P1×0.40 + P2×0.30 + P4×0.20 + P5×0.10
+- If P3 MATCH: Final Risk = 1.0 (CRITICAL). If P3 mismatch/N/A: Final Risk = P1×0.40 + P2×0.30 + P4×0.20 + P5×0.10
 
 RISK TIERS:
 - CRITICAL (≥0.70): Freeze + escalate to compliance officer
@@ -46,7 +46,7 @@ When a user requests to screen a client but only provides a name, you MUST ask f
 5. Hair colour (e.g. Black, Brown, Blond, Red, Grey, White)
 6. Eye colour (e.g. Brown, Blue, Green, Hazel, Grey)
 
-Present this as a friendly form-like request. Explain that biometric data is needed for the P3 biometric gate to avoid discrimination based solely on name matching.
+Present this as a friendly form-like request. Explain that biometric data enables the P3 biometric confirmation check — if biometrics match, the case is immediately escalated as CRITICAL; if they don't match, the system proceeds with full multi-pillar evaluation.
 
 If the user provides ALL biometric fields along with the name in one message, proceed directly with screening.
 
@@ -236,24 +236,32 @@ def screen(client_name, data, client_bio=None):
 
     p3_str = f'{p3_conf:.4f}' if p3_conf is not None else f'N/A ({p3_note})'
     p3_verdict = 'MATCH' if p3_match_flag == 1 else ('NO MATCH' if p3_match_flag == 0 else 'N/A')
-    p3_passed = (p3_match_flag == 1) if p3_match_flag is not None else True
+    p3_confirmed = (p3_match_flag == 1) if p3_match_flag is not None else False
 
-    if not p3_passed:
+    if p3_confirmed:
+        # Biometrics confirm identity → strongest evidence → immediate CRITICAL
+        if fid in data['severity_map']:
+            e = data['severity_map'][fid]
+            p2_label = e['final_crime_label']
+        else:
+            p2_label = fug.get('final_crime_label', 'Unknown')
         ctx = f"""SCREENING RESULT FOR: "{client_name}"
 Matched Fugitive: {fug['name']} [{fid}]
+Crime Type: {p2_label}
 
-P3 BIOMETRIC GATE:
+P3 BIOMETRIC CONFIRMATION:
   Confidence: {p3_str}  ({p3_verdict})
-  Biometric mismatch - P1/P2/P4/P5 scoring skipped.
+  Biometric match confirmed — this is the strongest evidence.
 
-RISK TIER: LOW RISK
-ACTION: P3 biometric mismatch - no further scoring
+FINAL RISK SCORE: 1.0000
+RISK TIER: CRITICAL
+ACTION: Biometric match confirmed — freeze + escalate immediately
 
 TOP-3 IDENTITY MATCHES:
 """ + "\\n".join(f"  #{i+1} {n}: {s:.4f}" for i, (n, s) in enumerate(top3))
-        return ctx, 'LOW RISK', 0.0
+        return ctx, 'CRITICAL', 1.0
 
-    # P3 passed -> full scoring
+    # P3 mismatch or N/A → need all pillars to evaluate
     if fid in data['severity_map']:
         e = data['severity_map'][fid]
         p2_label, p2_score = e['final_crime_label'], e['severity_score']
@@ -297,7 +305,7 @@ Matched Fugitive: {fug['name']} [{fid}]
 Crime Type: {p2_label}
 
 PILLAR SCORES:
-  P3 Biometric Conf.:    {p3_str}  ({p3_verdict})  <- gate passed
+  P3 Biometric Conf.:    {p3_str}  ({p3_verdict})  <- full evaluation needed
   P1 Identity (TF-IDF): {p1_score:.4f} × {W_P1} = {p1_score*W_P1:.4f}
   P2 Crime Severity:     {p2_score:.4f} × {W_P2} = {p2_score*W_P2:.4f}
   P4 Hidden Linkage:     {p4_total:.4f} × {W_P4} = {p4_total*W_P4:.4f}
