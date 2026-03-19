@@ -659,7 +659,7 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
         if screen_match:
             client_name = screen_match.group(1).strip().strip('"\'')
             st.session_state.pending_screen = client_name
-            user_msg = f"The user wants to screen a client named \"{client_name}\" but has only provided the name. Ask them for the biometric data needed for P3 validation: gender, date of birth (or age), height (m), weight (kg), hair colour, and eye colour. Explain briefly why biometric data is needed (to avoid discrimination based solely on name matching and to power the P3 biometric gate)."
+            user_msg = f"The user wants to screen a client named \"{client_name}\" but has only provided the name. Ask them for the biometric data needed for P3 validation: gender, date of birth (or age), height (m), weight (kg), hair colour, and eye colour. Explain briefly why biometric data is needed — if biometrics match, the case is immediately escalated as CRITICAL; if they don't match, the system proceeds with full multi-pillar evaluation."
         else:
             rag_context = db_context(prompt, data)
             user_msg = f"The user asked: \"{prompt}\"\\n\\nHere is the current database context:\\n\\n{rag_context}\\n\\nAnswer their question using the data above."
