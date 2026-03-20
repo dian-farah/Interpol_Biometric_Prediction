@@ -223,7 +223,10 @@ def screen(client_name, data, client_bio=None):
     client_bio_map = data.get('client_bio_map', {})
     client_key = client_name.upper().strip()
     bio = client_bio if client_bio else client_bio_map.get(client_key)
-    if p3_model and bio:
+    if p3_model:
+        if bio is None:
+            bio = {'full_name': client_name}
+            p3_note = 'Name-only (no biometric data available)'
         if 'full_name' not in bio:
             bio['full_name'] = client_name
         feats = compute_p3_features_st(bio, fug)
@@ -232,7 +235,7 @@ def screen(client_name, data, client_bio=None):
         p3_conf = float(p3_proba[1])
         p3_match_flag = int(p3_conf >= P3_THRESHOLD)
     else:
-        p3_note = 'No biometric data provided' if p3_model else 'P3 model not loaded'
+        p3_note = 'P3 model not loaded'
 
     p3_str = f'{p3_conf:.4f}' if p3_conf is not None else f'N/A ({p3_note})'
     p3_verdict = 'MATCH' if p3_match_flag == 1 else ('NO MATCH' if p3_match_flag == 0 else 'N/A')
