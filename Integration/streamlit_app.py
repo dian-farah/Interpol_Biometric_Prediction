@@ -17,7 +17,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 W_P1, W_P2, W_P4, W_P5 = 0.40, 0.30, 0.20, 0.10
 LINK_RANK_WEIGHTS = {1: 0.50, 2: 0.30, 3: 0.20}
 DEFAULT_VISUAL_SCORE = 0.5
-FINAL_THRESHOLDS = {'CRITICAL': 0.70, 'HIGH RISK': 0.50, 'REVIEW': 0.30, 'LOW RISK': 0.00}
+FINAL_THRESHOLDS = {'CRITICAL': 0.75, 'HIGH RISK': 0.50, 'REVIEW': 0.25, 'LOW RISK': 0.00}
 P3_THRESHOLD = 0.5
 
 SYSTEM_PROMPT = """You are an AI analyst for the INTERPOL Risk Intelligence System (CS610 project).
@@ -32,13 +32,13 @@ PIPELINE OVERVIEW (P3 is a biometric confirmation check):
 - If P3 MATCH: Final Risk = 1.0 (CRITICAL). If P3 mismatch/N/A: Final Risk = P1×0.40 + P2×0.30 + P4×0.20 + P5×0.10
 
 RISK TIERS:
-- CRITICAL (≥0.70): Freeze + escalate to compliance officer
-- HIGH RISK (≥0.50): Senior analyst review within 24hr
-- REVIEW (≥0.30): Junior analyst flag, monitor 30 days
-- LOW RISK (<0.30): Pass, log to audit trail
+- CRITICAL (0.75–1.00): Freeze + escalate to compliance officer
+- HIGH RISK (0.50–0.74): Senior analyst review within 24hr
+- REVIEW (0.25–0.49): Junior analyst flag, monitor 30 days
+- LOW RISK (0.00–0.24): Pass, log to audit trail
 
 BIOMETRIC DATA COLLECTION:
-When a user requests to screen a client but only provides a name, you MUST ask for the following biometric details before screening can proceed:
+When screening a client, the P3 biometric check compares these fields against the matched fugitive:
 1. Gender (M/F)
 2. Date of birth (or approximate age)
 3. Height (in metres, e.g. 1.75)
@@ -46,12 +46,16 @@ When a user requests to screen a client but only provides a name, you MUST ask f
 5. Hair colour (e.g. Black, Brown, Blond, Red, Grey, White)
 6. Eye colour (e.g. Brown, Blue, Green, Hazel, Grey)
 
-Present this as a friendly form-like request. Explain that biometric data enables the P3 biometric confirmation check — if biometrics match, the case is immediately escalated as CRITICAL; if they don't match, the system proceeds with full multi-pillar evaluation.
+COLLECTION RULES:
+- If only a name is given, ask for the above biometric details. Explain briefly that biometrics enable the P3 confirmation check.
+- The user may provide information incrementally across multiple messages. After each reply, acknowledge what was received and ask for the remaining fields.
+- If the user says 'that is all', 'proceed', 'done', or similar — STOP asking and let the system proceed with whatever data is available. Missing fields default to 0 in P3.
+- If ALL fields are provided in one message, proceed directly.
+- Always remind the user they can say 'that is all' to skip remaining fields.
 
-If the user provides ALL biometric fields along with the name in one message, proceed directly with screening.
-
-When you receive the biometric data, respond with EXACTLY this format on its own line so the system can parse it:
-BIOMETRICS_COLLECTED: gender=<M or F>, dob=<YYYY-MM-DD or age_XX>, height=<metres>, weight=<kg>, hair=<colour>, eye=<colour>
+When you have biometric data to report, respond with EXACTLY this format on its own line:
+BIOMETRICS_COLLECTED: gender=<M or F or none>, dob=<YYYY-MM-DD or age_XX or none>, height=<metres or none>, weight=<kg or none>, hair=<colour or none>, eye=<colour or none>
+Use 'none' for fields the user did not provide.
 
 RESPONSE FORMAT RULES — you MUST follow these:
 - Use markdown formatting: **bold** for emphasis, headers (##, ###) for sections, bullet points for lists.
@@ -69,7 +73,7 @@ RESPONSE FORMAT RULES — you MUST follow these:
 # ─────────────────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_pipeline():
-    # ── Directory config (mirrors notebook Cell 4) ────────────────────────────
+    # Directory config (mirrors notebook Cell 4)
     repo_root  = os.path.abspath(os.path.join(os.getcwd(), '..'))
 
     def _res(*candidates):
@@ -298,9 +302,9 @@ TOP-3 IDENTITY MATCHES:
     p5_score = DEFAULT_VISUAL_SCORE
     final = p1_score * W_P1 + p2_score * W_P2 + p4_total * W_P4 + p5_score * W_P5
 
-    if final >= 0.70: tier, action = 'CRITICAL', 'Freeze + escalate to compliance officer'
+    if final >= 0.75: tier, action = 'CRITICAL', 'Freeze + escalate to compliance officer'
     elif final >= 0.50: tier, action = 'HIGH RISK', 'Senior analyst review within 24hr'
-    elif final >= 0.30: tier, action = 'REVIEW', 'Junior analyst flag, monitor 30 days'
+    elif final >= 0.25: tier, action = 'REVIEW', 'Junior analyst flag, monitor 30 days'
     else: tier, action = 'LOW RISK', 'Pass, log to audit trail'
 
     ctx = f"""SCREENING RESULT FOR: "{client_name}"
@@ -380,7 +384,8 @@ TIER_STYLES = {
 }
 
 def parse_biometrics(text):
-    """Extract BIOMETRICS_COLLECTED line from LLM response and build a client_bio dict."""
+    """Extract BIOMETRICS_COLLECTED line from LLM response and build a client_bio dict.
+    Fields set to 'none' are skipped (treated as not provided)."""
     for line in text.splitlines():
         line = line.strip()
         if line.startswith('BIOMETRICS_COLLECTED:'):
@@ -392,6 +397,8 @@ def parse_biometrics(text):
                     continue
                 k, v = pair.split('=', 1)
                 k, v = k.strip().lower(), v.strip()
+                if v.lower() in ('none', 'n/a', 'unknown', '', '\u2014', '-'):
+                    continue
                 if k == 'gender':
                     bio['gender'] = v.upper()
                 elif k == 'dob':
@@ -415,6 +422,24 @@ def parse_biometrics(text):
                     bio['eye_color'] = v
             return bio if bio else None
     return None
+
+
+BIO_FIELDS = {'gender', 'date_of_birth', 'height_m', 'weight_kg', 'hair_color', 'eye_color'}
+BIO_DISPLAY = {
+    'gender': 'Gender', 'date_of_birth': 'DOB', 'height_m': 'Height',
+    'weight_kg': 'Weight', 'hair_color': 'Hair', 'eye_color': 'Eye',
+}
+PROCEED_PHRASES = [
+    'that is all', "that's all", 'that is it', "that's it",
+    'thats all', 'thats it', 'proceed', 'go ahead', 'run it',
+    'screen now', 'just screen', 'no more', 'nothing else',
+    'done', "that's everything", 'that is everything',
+    'run the screening', 'screen with what you have',
+]
+
+def user_wants_to_proceed(text):
+    lower = text.lower().strip().rstrip('.!,')
+    return any(p in lower for p in PROCEED_PHRASES)
 
 
 def render_score_card(client_name, tier, score, rag_context):
@@ -454,10 +479,10 @@ def render_score_card(client_name, tier, score, rag_context):
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem 1.5rem; font-size:0.82rem; color:#334155;">
     <div><span style="color:#64748b;">Matched:</span> <b>{matched.replace('Matched Fugitive: ','')}</b></div>
     <div><span style="color:#64748b;">Crime:</span> <b>{crime.replace('Crime Type: ','')}</b></div>
-    <div><span style="color:#64748b;">P1 Identity:</span> <code>{p1r}</code> &rarr; <b>{p1w}</b></div>
-    <div><span style="color:#64748b;">P2 Severity:</span> <code>{p2r}</code> &rarr; <b>{p2w}</b></div>
-    <div><span style="color:#64748b;">P4 Linkage:</span> <code>{p4r}</code> &rarr; <b>{p4w}</b></div>
-    <div><span style="color:#64748b;">P5 Visual:</span> <code>{p5r}</code> &rarr; <b>{p5w}</b></div>
+    <div><span style="color:#64748b;">P1 Identity:</span> <span style="background:#f1f5f9;padding:0.1rem 0.3rem;border-radius:3px;font-family:monospace;font-size:0.78rem;">{p1r}</span> &rarr; <b>{p1w}</b></div>
+    <div><span style="color:#64748b;">P2 Severity:</span> <span style="background:#f1f5f9;padding:0.1rem 0.3rem;border-radius:3px;font-family:monospace;font-size:0.78rem;">{p2r}</span> &rarr; <b>{p2w}</b></div>
+    <div><span style="color:#64748b;">P4 Linkage:</span> <span style="background:#f1f5f9;padding:0.1rem 0.3rem;border-radius:3px;font-family:monospace;font-size:0.78rem;">{p4r}</span> &rarr; <b>{p4w}</b></div>
+    <div><span style="color:#64748b;">P5 Visual:</span> <span style="background:#f1f5f9;padding:0.1rem 0.3rem;border-radius:3px;font-family:monospace;font-size:0.78rem;">{p5r}</span> &rarr; <b>{p5w}</b></div>
   </div>
 </div>"""
 
@@ -528,6 +553,7 @@ st.markdown("""
     }
     .pillar-tag.p1 { background: #1e3a5f; color: #7eb8f7; }
     .pillar-tag.p2 { background: #3a1f1f; color: #f7a07e; }
+    .pillar-tag.p3 { background: #2f1f3a; color: #c97ef7; }
     .pillar-tag.p4 { background: #1f3a2a; color: #7ef7a0; }
     .pillar-tag.p5 { background: #3a2a1f; color: #f7d77e; }
 
@@ -552,19 +578,67 @@ st.markdown("""
         font-weight: 600;
         margin: 1rem 0 0.5rem 0;
     }
+    .tier-header {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        margin: 0.7rem 0 0.3rem 0;
+        display: inline-block;
+    }
+    .tier-critical { background: #3a1a1a; color: #ff6b6b; }
+    .tier-high     { background: #3a2a1a; color: #ffaa6b; }
+    .tier-review   { background: #3a3a1a; color: #ffd76b; }
+    .tier-low      { background: #1a3a1a; color: #6bff8a; }
+    .tc-name { font-weight: 600; color: #e0e8f4 !important; font-size: 0.82rem; }
+    .tc-detail { font-size: 0.68rem; color: #7888a0 !important; margin-top: 0.1rem; }
+    [data-testid="stSidebar"] button[kind="secondary"] {
+        background: rgba(255,255,255,0.05) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        color: #c8cfe0 !important;
+        text-align: left !important;
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.78rem !important;
+        width: 100% !important;
+        border-radius: 6px !important;
+        transition: background 0.15s !important;
+    }
+    [data-testid="stSidebar"] button[kind="secondary"]:hover {
+        background: rgba(255,255,255,0.12) !important;
+        border-color: rgba(255,255,255,0.2) !important;
+    }
 
     [data-testid="stChatMessage"] {
         background: #ffffff;
+        color: #1a1a2e !important;
         border: 1px solid #e2e8f0;
         border-radius: 12px;
         padding: 1rem 1.2rem;
         margin-bottom: 0.8rem;
         box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
+    [data-testid="stChatMessage"] p,
+    [data-testid="stChatMessage"] li,
+    [data-testid="stChatMessage"] span,
+    [data-testid="stChatMessage"] code,
+    [data-testid="stChatMessage"] pre,
+    [data-testid="stChatMessage"] h1,
+    [data-testid="stChatMessage"] h2,
+    [data-testid="stChatMessage"] h3,
+    [data-testid="stChatMessage"] h4,
+    [data-testid="stChatMessage"] a,
+    [data-testid="stChatMessage"] td,
+    [data-testid="stChatMessage"] th,
+    [data-testid="stChatMessage"] label {
+        color: #1a1a2e !important;
+    }
     [data-testid="stChatInput"] textarea {
         border-radius: 12px !important;
         border: 2px solid #d0d7e3 !important;
         background: #ffffff !important;
+        color: #1a1a2e !important;
         font-size: 0.95rem !important;
     }
     [data-testid="stChatInput"] textarea:focus {
@@ -591,12 +665,73 @@ with st.sidebar:
     model = "gpt-5-mini"
     st.markdown(f'<div style="font-size:0.8rem; color:#8b95b0 !important; margin-top:0.3rem;">Model: <b style="color:#fff !important;">{model}</b></div>', unsafe_allow_html=True)
     st.divider()
-    st.markdown('<div class="sidebar-label">Example queries</div>', unsafe_allow_html=True)
+
+    SIDEBAR_TEST_CASES = [
+        {"tier": "CRITICAL", "name": "SANAVBARI NIKITENKO",
+         "bio": {"date_of_birth": "1992-06-28", "gender": "F", "hair_color": "OTHD", "eye_color": "OTHD"},
+         "desc": "True fugitive, bio confirms (terrorism)"},
+        {"tier": "CRITICAL", "name": "JIAN XIA",
+         "bio": {"date_of_birth": "1977-07-13", "gender": "M"},
+         "desc": "True fugitive, bio confirms (homicide)"},
+        {"tier": "CRITICAL", "name": "ABDLU SAMBOLATOV",
+         "bio": {"date_of_birth": "1991-06-07", "gender": "M", "eye_color": "BRO"},
+         "desc": "Typo in name, bio still confirms"},
+
+        {"tier": "HIGH RISK", "name": "ALEXANDER ZARUBIN",
+         "bio": {"date_of_birth": "1968-05-26", "gender": "M", "height_m": "1.88", "weight_kg": "120", "hair_color": "GRY"},
+         "desc": "Exact name, P3 mismatch, score ~0.73"},
+        {"tier": "HIGH RISK", "name": "HENRY HARVEY",
+         "bio": {"date_of_birth": "1954-01-17", "gender": "M", "height_m": "1.65", "weight_kg": "82"},
+         "desc": "Common name, weak P1, score ~0.58"},
+        {"tier": "HIGH RISK", "name": "SILVIO AKOEVA",
+         "bio": {"date_of_birth": "1977-10-31", "gender": "M", "hair_color": "GRYG", "eye_color": "BRO"},
+         "desc": "Partial first-name match, score ~0.54"},
+
+        {"tier": "REVIEW", "name": "LEO UZ",
+         "bio": {"date_of_birth": "1994-02-02", "gender": "M"},
+         "desc": "Very short name, low P1, score ~0.48"},
+        {"tier": "REVIEW", "name": "EVIS PAZ",
+         "bio": {"date_of_birth": "1974-12-09", "gender": "M", "eye_color": "BLA"},
+         "desc": "Short name, low P1, score ~0.48"},
+    ]
+
+    TIER_CSS = {
+        "CRITICAL": "tier-critical",
+        "HIGH RISK": "tier-high",
+        "REVIEW": "tier-review",
+        "LOW RISK": "tier-low",
+    }
+
+    st.markdown('<div class="sidebar-label">Test cases by risk tier</div>', unsafe_allow_html=True)
+
+    current_tier = None
+    for i, tc in enumerate(SIDEBAR_TEST_CASES):
+        if tc["tier"] != current_tier:
+            current_tier = tc["tier"]
+            css_cls = TIER_CSS.get(current_tier, "tier-high")
+            st.markdown(f'<div class="tier-header {css_cls}">{current_tier}</div>', unsafe_allow_html=True)
+        if st.button(f"{tc['name']}  \u2014  {tc['desc']}", key=f"tc_{i}", use_container_width=True):
+            bio = tc["bio"]
+            bio_parts = []
+            if "date_of_birth" in bio: bio_parts.append(f"DOB {bio['date_of_birth']}")
+            if "gender" in bio: bio_parts.append(f"gender {bio['gender']}")
+            if "height_m" in bio: bio_parts.append(f"height {bio['height_m']}m")
+            if "weight_kg" in bio: bio_parts.append(f"weight {bio['weight_kg']}kg")
+            if "hair_color" in bio: bio_parts.append(f"hair {bio['hair_color']}")
+            if "eye_color" in bio: bio_parts.append(f"eye {bio['eye_color']}")
+            bio_str = ", ".join(bio_parts)
+            auto_msg = f"Screen {tc['name']}"
+            st.session_state.messages.append({"role": "user", "content": auto_msg})
+            client_bio = {"full_name": tc["name"]}
+            client_bio.update(bio)
+            st.session_state.pending_screen = None
+            st.session_state._auto_screen = {"name": tc["name"], "bio": client_bio}
+            st.rerun()
+
+    st.divider()
+    st.markdown('<div class="sidebar-label">Or ask a question</div>', unsafe_allow_html=True)
     for ex in [
-        "Screen S. Nikitenko",
-        "Screen Abdul Sambolotov",
         "How many terrorism fugitives?",
-        "Show me fugitives from Russia",
         "What crime types are in the database?",
     ]:
         st.markdown(f'<div class="sidebar-example">{ex}</div>', unsafe_allow_html=True)
@@ -608,6 +743,7 @@ st.markdown("""
     <div class="pillar-row">
         <span class="pillar-tag p1">P1 &middot; TF-IDF &middot; 40%</span>
         <span class="pillar-tag p2">P2 &middot; Crime &middot; 30%</span>
+        <span class="pillar-tag p3">P3 &middot; Biometric &middot; Gate</span>
         <span class="pillar-tag p4">P4 &middot; GraphSAGE &middot; 20%</span>
         <span class="pillar-tag p5">P5 &middot; CLIP &middot; 10%</span>
     </div>
@@ -625,6 +761,34 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
+if "_auto_screen" in st.session_state and st.session_state._auto_screen:
+    _asc = st.session_state._auto_screen
+    st.session_state._auto_screen = None
+    _asc_name = _asc["name"]
+    _asc_bio = _asc["bio"]
+    _asc_ctx, _asc_tier, _asc_score = screen(_asc_name, data, client_bio=_asc_bio)
+    bio_summary = ", ".join(f"{k}={v}" for k, v in _asc_bio.items() if k != "full_name" and v)
+    if not api_key:
+        with st.chat_message("assistant"):
+            st.warning("Enter your OpenAI API key in the sidebar for AI-powered explanations.")
+            st.code(_asc_ctx, language=None)
+            st.markdown(render_score_card(_asc_name, _asc_tier, _asc_score, _asc_ctx), unsafe_allow_html=True)
+        st.session_state.messages.append({"role": "assistant", "content": f"```\n{_asc_ctx}\n```"})
+    else:
+        _asc_oai = OpenAI(api_key=api_key)
+        _asc_user_msg = (
+            f'Screened client "{_asc_name}" with biometrics: {bio_summary}.\n\n'
+            f'Pipeline results:\n\n{_asc_ctx}\n\n'
+            f'Explain this screening result clearly. What does each pillar score mean? Is this person a risk?'
+        )
+        _asc_msgs = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": _asc_user_msg}]
+        with st.chat_message("assistant"):
+            _asc_stream = _asc_oai.chat.completions.create(model=model, messages=_asc_msgs, stream=True)
+            _asc_resp = st.write_stream(_asc_stream)
+            st.markdown(render_score_card(_asc_name, _asc_tier, _asc_score, _asc_ctx), unsafe_allow_html=True)
+        st.session_state.messages.append({"role": "assistant", "content": _asc_resp})
+    st.stop()
+
 if prompt := st.chat_input("Screen a client or ask about the fugitive database..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -633,36 +797,84 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
     rag_context = None
     user_msg = None
     run_screening = False
-    client_bio = None
+    screened_name = None
 
     if st.session_state.pending_screen:
-        pending_name = st.session_state.pending_screen
-        if api_key:
+        pending = st.session_state.pending_screen
+        pending_name = pending['name']
+        accumulated_bio = pending.get('bio', {})
+        proceed_now = user_wants_to_proceed(prompt)
+
+        if not proceed_now and api_key:
+            collected_str = ", ".join(f"{k}={v}" for k, v in accumulated_bio.items()) or "none yet"
+            remaining = [BIO_DISPLAY.get(f, f) for f in sorted(BIO_FIELDS - set(accumulated_bio.keys()))]
             oai = OpenAI(api_key=api_key)
             parse_msgs = [
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": f"The user previously asked to screen \"{pending_name}\" and was asked for biometric data. They replied with:\\n\\n\"{prompt}\"\\n\\nExtract the biometric fields and respond with the BIOMETRICS_COLLECTED line. If they did not provide enough info, ask again politely."},
+                {"role": "user", "content": (
+                    f'Screening client \"{pending_name}\". Already collected: {collected_str}. '
+                    f'Still need: {", ".join(remaining)}. '
+                    f'User says: \"{prompt}\". '
+                    f'Extract any new biometric fields from the message. '
+                    f'Output a BIOMETRICS_COLLECTED line with what you found (use \"none\" for fields not mentioned).'
+                )},
             ]
-            parse_resp = oai.chat.completions.create(model=model, messages=parse_msgs)
-            llm_text = parse_resp.choices[0].message.content
-            client_bio = parse_biometrics(llm_text)
+            try:
+                parse_resp = oai.chat.completions.create(model=model, messages=parse_msgs)
+                new_bio = parse_biometrics(parse_resp.choices[0].message.content)
+                if new_bio:
+                    accumulated_bio.update(new_bio)
+                    pending['bio'] = accumulated_bio
+            except Exception:
+                pass
 
-        if client_bio:
-            client_bio['full_name'] = pending_name
+        all_collected = BIO_FIELDS.issubset(set(accumulated_bio.keys()))
+
+        if proceed_now or all_collected:
+            client_bio = {'full_name': pending_name}
+            client_bio.update(accumulated_bio)
             rag_context, tier, score = screen(pending_name, data, client_bio=client_bio)
-            bio_summary = ", ".join(f"{k}={v}" for k, v in client_bio.items() if k != 'full_name')
-            user_msg = f"I screened client \"{pending_name}\" with biometrics: {bio_summary}.\\n\\nPipeline results:\\n\\n{rag_context}\\n\\nExplain this screening result clearly. What does each pillar score mean? Is this person a risk?"
+            missing = sorted(BIO_FIELDS - set(accumulated_bio.keys()))
+            bio_str = ", ".join(f"{k}={v}" for k, v in accumulated_bio.items()) or "name only"
+            missing_note = (f"\\n\\nNote: Missing biometric fields ({', '.join(missing)}) "
+                           f"— P3 used default values (0) for these.") if missing else ""
+            user_msg = (
+                f'I screened client \"{pending_name}\" with: {bio_str}.{missing_note}'
+                f'\\n\\nPipeline results:\\n\\n{rag_context}'
+                f'\\n\\nExplain this screening result clearly. What does each pillar score mean? Is this person a risk?'
+            )
             run_screening = True
+            screened_name = pending_name
             st.session_state.pending_screen = None
         else:
-            user_msg = f"The user tried to provide biometric data for screening \"{pending_name}\" but the data was incomplete or unclear. Their message: \"{prompt}\". Ask them again for the missing fields: gender (M/F), date of birth or age, height (m), weight (kg), hair colour, eye colour."
+            collected_display = ", ".join(
+                f"{BIO_DISPLAY.get(k, k)}={v}" for k, v in accumulated_bio.items()
+            ) or "nothing yet"
+            remaining_display = ", ".join(
+                BIO_DISPLAY.get(f, f) for f in sorted(BIO_FIELDS - set(accumulated_bio.keys()))
+            )
+            user_msg = (
+                f'Screening client \"{pending_name}\". '
+                f'Collected so far: {collected_display}. Still need: {remaining_display}. '
+                f'The user said: \"{prompt}\". '
+                f'Acknowledge what they provided, ask for the remaining fields. '
+                f'Remind them they can say \"that is all\" to proceed with available data.'
+            )
 
     else:
         screen_match = re.match(r'(?i)screen\s+(.+)', prompt.strip())
         if screen_match:
             client_name = screen_match.group(1).strip().strip('"\'')
-            st.session_state.pending_screen = client_name
-            user_msg = f"The user wants to screen a client named \"{client_name}\" but has only provided the name. Ask them for the biometric data needed for P3 validation: gender, date of birth (or age), height (m), weight (kg), hair colour, and eye colour. Explain briefly why biometric data is needed — if biometrics match, the case is immediately escalated as CRITICAL; if they don't match, the system proceeds with full multi-pillar evaluation."
+            st.session_state.pending_screen = {'name': client_name, 'bio': {}}
+            user_msg = (
+                f'The user wants to screen a client named \"{client_name}\". '
+                f'No biometric data provided yet. Ask for: gender (M/F), date of birth (or age), '
+                f'height (m), weight (kg), hair colour, eye colour. '
+                f'Explain briefly that biometrics enable the P3 confirmation check — '
+                f'if biometrics match, the case is immediately escalated as CRITICAL; '
+                f'if not, the system proceeds with full multi-pillar evaluation. '
+                f'Let them know they can say \"that is all\" at any point to proceed with whatever data they have.'
+            )
         else:
             rag_context = db_context(prompt, data)
             user_msg = f"The user asked: \"{prompt}\"\\n\\nHere is the current database context:\\n\\n{rag_context}\\n\\nAnswer their question using the data above."
@@ -684,22 +896,27 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
             stream = oai_client.chat.completions.create(model=model, messages=messages, stream=True)
             response = st.write_stream(stream)
 
-        if run_screening and rag_context:
-            render_score_card(st.session_state.pending_screen or client_name if 'client_name' in dir() else 'Client', tier, score, rag_context)
+        if run_screening and rag_context and screened_name:
+            st.markdown(render_score_card(screened_name, tier, score, rag_context), unsafe_allow_html=True)
 
         bio_from_response = parse_biometrics(response)
         if bio_from_response and st.session_state.pending_screen:
-            pending_name = st.session_state.pending_screen
-            bio_from_response['full_name'] = pending_name
-            rag_context, tier, score = screen(pending_name, data, client_bio=bio_from_response)
-            bio_summary = ", ".join(f"{k}={v}" for k, v in bio_from_response.items() if k != 'full_name')
-            follow_msg = f"I screened client \"{pending_name}\" with biometrics: {bio_summary}.\\n\\nPipeline results:\\n\\n{rag_context}\\n\\nExplain this screening result clearly."
-            st.session_state.pending_screen = None
-            msgs2 = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": follow_msg}]
-            with st.chat_message("assistant"):
-                stream2 = oai_client.chat.completions.create(model=model, messages=msgs2, stream=True)
-                response2 = st.write_stream(stream2)
-                render_score_card(pending_name, tier, score, rag_context)
-            st.session_state.messages.append({"role": "assistant", "content": response2})
+            pending = st.session_state.pending_screen
+            pending['bio'].update(bio_from_response)
+            if BIO_FIELDS.issubset(set(pending['bio'].keys())):
+                pn = pending['name']
+                client_bio = {'full_name': pn, **pending['bio']}
+                rag_context, tier, score = screen(pn, data, client_bio=client_bio)
+                follow_msg = (
+                    f'All biometrics collected for \"{pn}\". '
+                    f'Results:\\n\\n{rag_context}\\n\\nExplain this screening result clearly.'
+                )
+                st.session_state.pending_screen = None
+                msgs2 = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": follow_msg}]
+                with st.chat_message("assistant"):
+                    stream2 = oai_client.chat.completions.create(model=model, messages=msgs2, stream=True)
+                    response2 = st.write_stream(stream2)
+                    st.markdown(render_score_card(pn, tier, score, rag_context), unsafe_allow_html=True)
+                st.session_state.messages.append({"role": "assistant", "content": response2})
 
         st.session_state.messages.append({"role": "assistant", "content": response})
