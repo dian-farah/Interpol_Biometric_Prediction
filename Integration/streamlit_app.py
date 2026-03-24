@@ -11,6 +11,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import normalize
 from sklearn.metrics.pairwise import cosine_similarity
 
+APP_DIR = os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else os.getcwd()
+REPO_ROOT = os.path.abspath(os.path.join(APP_DIR, '..'))
+TEST_IMAGES_DIR = os.path.join(REPO_ROOT, 'test_images')
+DOWNLOADED_IMAGES_DIR = os.path.join(REPO_ROOT, 'downloaded_images')
+DOWNLOADED_IMAGES_DIR_APP = os.path.join(APP_DIR, 'downloaded_images')
+
 # ─────────────────────────────────────────────────────────────────────────────
 # CONFIG
 # ─────────────────────────────────────────────────────────────────────────────
@@ -28,7 +34,7 @@ PIPELINE OVERVIEW (P3 is a biometric confirmation check):
 - Pillar 1 (40%): TF-IDF char n-gram cosine similarity for identity resolution
 - Pillar 2 (30%): Crime severity from categorisation export (terrorism=1.0, homicide=0.9, sexual crime=0.8, armed formation/assault/narcotics=0.7, financial crime=0.5)
 - Pillar 4 (20%): Hidden linkage from GraphSAGE link predictions (top-3 linked fugitives, rank weights normalised to sum to 1.0)
-- Pillar 5 (10%): Visual similarity via CLIP (placeholder 0.5 until delivered)
+- Pillar 5 (10%): Visual similarity via ViT embeddings with calibrated sigmoid scoring (fallback 0.5 when unavailable)
 - If P3 MATCH: Final Risk = 1.0 (CRITICAL). If P3 mismatch/N/A: Final Risk = P1×0.40 + P2×0.30 + P4×0.20 + P5×0.10
 
 RISK TIERS:
@@ -74,7 +80,7 @@ RESPONSE FORMAT RULES — you MUST follow these:
 @st.cache_resource
 def load_pipeline():
     # Directory config (mirrors notebook Cell 4)
-    repo_root  = os.path.abspath(os.path.join(os.getcwd(), '..'))
+    repo_root = REPO_ROOT
 
     def _res(*candidates):
         for p in candidates:
@@ -158,12 +164,67 @@ def load_pipeline():
         df_cl = df_cl.drop_duplicates(subset='full_name_upper', keep='first')
         client_bio_map = df_cl.set_index('full_name_upper').to_dict('index')
 
+
+    # P5: Visual model + embeddings (optional)
+    p5_base = os.path.join(repo_root, 'Pillar 5 (Vision Score)', 'outputs')
+    p5_baseline_model = os.path.join(p5_base, 'mae_face_pretrain_vit_base.pth')
+    p5_embeddings_tensor = os.path.join(p5_base, 'interpol_vector_database.pt')
+    p5_model_path = os.path.join(p5_base, 'best_disguise_blind_vit_epoch_7.pth')
+    vision_embeddings = {}
+    p5_model = None
+    p5_device = 'cpu'
+    p5_load_error = None
+
+    try:
+        import torch
+        import torch.nn as nn
+        import torch.nn.functional as F
+        import timm
+
+        class FaceMAE_Contrastive(nn.Module):
+            def __init__(self, embedding_size=512, pretrained_path=p5_baseline_model):
+                super(FaceMAE_Contrastive, self).__init__()
+                self.backbone = timm.create_model('vit_base_patch16_224', pretrained=False, num_classes=0)
+
+                if os.path.exists(pretrained_path):
+                    checkpoint = torch.load(pretrained_path, map_location='cpu', weights_only=False)
+                    if isinstance(checkpoint, dict) and 'model' in checkpoint:
+                        self.backbone.load_state_dict(checkpoint['model'], strict=False)
+                    elif isinstance(checkpoint, dict):
+                        self.backbone.load_state_dict(checkpoint, strict=False)
+
+                self.projection_head = nn.Sequential(
+                    nn.Linear(768, 512),
+                    nn.BatchNorm1d(512),
+                    nn.ReLU(),
+                    nn.Linear(512, embedding_size),
+                )
+
+            def forward(self, x):
+                features = self.backbone(x)
+                embeddings = self.projection_head(features)
+                return F.normalize(embeddings, p=2, dim=1)
+
+        if os.path.exists(p5_embeddings_tensor):
+            vision_embeddings = torch.load(p5_embeddings_tensor, weights_only=False)
+
+        if os.path.exists(p5_model_path):
+            p5_device = 'cuda' if torch.cuda.is_available() else 'cpu'
+            p5_model = FaceMAE_Contrastive(pretrained_path=p5_baseline_model).to(p5_device)
+            p5_model.load_state_dict(torch.load(p5_model_path, map_location=p5_device, weights_only=False), strict=False)
+            p5_model.eval()
+    except Exception as e:
+        p5_model = None
+        p5_load_error = f'{type(e).__name__}: {e}'
+
     return {
         'df_unique': df_unique, 'vectorizer': vectorizer, 'embeddings': embeddings,
         'df_links': df_links, 'linkage_score_map': linkage_score_map,
         'severity_map': severity_map, 'crime_severity': crime_severity,
         'df_crime': df_crime,
         'p3_model': p3_model, 'client_bio_map': client_bio_map,
+        'p5_model': p5_model, 'p5_device': p5_device, 'vision_embeddings': vision_embeddings,
+        'p5_load_error': p5_load_error,
     }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -205,10 +266,95 @@ def compute_p3_features_st(client, fugitive):
     same_eye = 1 if (c_eye and f_eye and c_eye not in ('', 'NAN') and f_eye not in ('', 'NAN', 'OTHD') and c_eye == f_eye) else 0
     return [name_sim, age_diff, same_gender, height_diff, weight_diff, same_hair, same_eye]
 
+
+def resolve_image_path(path_hint):
+    if not path_hint:
+        return None
+    path_hint = str(path_hint).strip()
+    # Use exactly what test cases provide first (typically ../test_images/...).
+    candidates = [
+        path_hint,
+        os.path.join(APP_DIR, path_hint),
+        os.path.join(REPO_ROOT, path_hint),
+        os.path.join(TEST_IMAGES_DIR, path_hint),
+    ]
+    for c in candidates:
+        if os.path.isfile(c):
+            return c
+    return None
+
+
+def pillar5_visual_st(matched_id, client_image, data):
+    p5_score = DEFAULT_VISUAL_SCORE
+    p5_reason = 'fallback_default'
+    if not client_image:
+        st.session_state['_p5_reason'] = 'missing_client_image'
+        return p5_score
+
+    img_path = resolve_image_path(client_image)
+    if not img_path:
+        st.session_state['_p5_reason'] = 'client_image_not_found'
+        return p5_score
+
+    p5_model = data.get('p5_model')
+    vision_embeddings = data.get('vision_embeddings', {})
+    if p5_model is None:
+        err = data.get('p5_load_error')
+        st.session_state['_p5_reason'] = f'p5_model_unavailable: {err}' if err else 'p5_model_unavailable'
+        return p5_score
+
+    target_vector = None
+    if isinstance(vision_embeddings, dict):
+        if matched_id in vision_embeddings:
+            target_vector = vision_embeddings[matched_id]
+        elif str(matched_id) in vision_embeddings:
+            target_vector = vision_embeddings[str(matched_id)]
+        else:
+            for k, v in vision_embeddings.items():
+                if str(k) == str(matched_id):
+                    target_vector = v
+                    break
+
+    if target_vector is None:
+        st.session_state['_p5_reason'] = 'embedding_not_found_for_matched_id'
+        return p5_score
+
+    try:
+        import torch
+        from PIL import Image
+        from torchvision import transforms
+
+        device = data.get('p5_device', 'cpu')
+        vit_transforms = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+        ])
+
+        img = Image.open(img_path).convert('RGB')
+        img_t = vit_transforms(img).unsqueeze(0).to(device)
+        with torch.no_grad():
+            features = p5_model(img_t)
+
+        probe_vector = features.detach().cpu().numpy().flatten()
+        if hasattr(target_vector, 'detach'):
+            target_vector = target_vector.detach().cpu().numpy()
+        target_vector = np.array(target_vector).flatten()
+
+        raw_similarity = float(np.dot(probe_vector, target_vector))
+        p5_score = float(1 / (1 + np.exp(-30 * (raw_similarity - 0.7563))))
+        p5_reason = f'computed_from_image_raw={raw_similarity:.4f}'
+    except Exception as e:
+        p5_reason = f'p5_compute_exception: {type(e).__name__}'
+
+    st.session_state['_p5_reason'] = p5_reason
+
+    return round(p5_score, 4)
+
 # ─────────────────────────────────────────────────────────────────────────────
 # PIPELINE FUNCTIONS
 # ─────────────────────────────────────────────────────────────────────────────
-def screen(client_name, data, client_bio=None):
+def screen(client_name, data, client_bio=None, client_image=None):
     df = data['df_unique']
     # Candidate retrieval via TF-IDF
     q = normalize(data['vectorizer'].transform([client_name.upper()]))
@@ -299,7 +445,11 @@ TOP-3 IDENTITY MATCHES:
         p4_total = data['linkage_score_map'][fid]
         p4_detail.append(f"  (score from hidden_linkage_scores.csv — no per-link detail)")
 
-    p5_score = DEFAULT_VISUAL_SCORE
+    candidate_client_image = client_image
+    if candidate_client_image is None and isinstance(client_bio, dict):
+        candidate_client_image = client_bio.get('client_image')
+    p5_score = pillar5_visual_st(fid, candidate_client_image, data)
+    p5_reason = st.session_state.get('_p5_reason', 'unknown')
     final = p1_score * W_P1 + p2_score * W_P2 + p4_total * W_P4 + p5_score * W_P5
 
     if final >= 0.75: tier, action = 'CRITICAL', 'Freeze + escalate to compliance officer'
@@ -317,6 +467,7 @@ PILLAR SCORES:
   P2 Crime Severity:     {p2_score:.4f} × {W_P2} = {p2_score*W_P2:.4f}
   P4 Hidden Linkage:     {p4_total:.4f} × {W_P4} = {p4_total*W_P4:.4f}
   P5 Visual Similarity:  {p5_score:.4f} × {W_P5} = {p5_score*W_P5:.4f}
+    P5 Status:             {p5_reason}
 
 FINAL RISK SCORE: {final:.4f}
 RISK TIER: {tier}
@@ -440,6 +591,61 @@ PROCEED_PHRASES = [
 def user_wants_to_proceed(text):
     lower = text.lower().strip().rstrip('.!,')
     return any(p in lower for p in PROCEED_PHRASES)
+
+
+def parse_matched_id(rag_context):
+    if not rag_context:
+        return None
+    m = re.search(r'Matched Fugitive:\s+.*\[(.*?)\]', rag_context)
+    return m.group(1).strip() if m else None
+
+
+def find_fugitive_image_by_id(matched_id):
+    if not matched_id:
+        return None
+
+    # User-requested fallback path: downloaded_images/{id}.jpg
+    downloaded_jpg_candidates = [
+        os.path.join(DOWNLOADED_IMAGES_DIR, f'{matched_id}.jpg'),
+        os.path.join(DOWNLOADED_IMAGES_DIR_APP, f'{matched_id}.jpg'),
+    ]
+    for candidate in downloaded_jpg_candidates:
+        if os.path.isfile(candidate):
+            return candidate
+
+    # Extra robustness for existing local test sets.
+    for ext in ('.jpg', '.jpeg', '.png', '.webp'):
+        candidate = os.path.join(TEST_IMAGES_DIR, f'{matched_id}{ext}')
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
+def resolve_fugitive_image_path(fugitive_image_hint, matched_id):
+    resolved_hint = resolve_image_path(fugitive_image_hint)
+    if resolved_hint:
+        return resolved_hint
+    return find_fugitive_image_by_id(matched_id)
+
+
+def render_photo_pair(client_image_path=None, fugitive_image_path=None):
+    client_img = resolve_image_path(client_image_path)
+    fugitive_img = resolve_image_path(fugitive_image_path)
+    if not client_img and not fugitive_img:
+        return
+
+    st.markdown('#### Photo Comparison')
+    c1, c2 = st.columns(2)
+    with c1:
+        if client_img:
+            st.image(client_img, caption='Client photo', use_container_width=True)
+        else:
+            st.info('Client photo not available')
+    with c2:
+        if fugitive_img:
+            st.image(fugitive_img, caption='Matched fugitive photo', use_container_width=True)
+        else:
+            st.info('Fugitive photo not available')
 
 
 def render_score_card(client_name, tier, score, rag_context):
@@ -648,6 +854,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Initialize state before sidebar buttons can access it.
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+if "pending_screen" not in st.session_state:
+    st.session_state.pending_screen = None
+if "_auto_screen" not in st.session_state:
+    st.session_state._auto_screen = None
+
 with st.sidebar:
     st.markdown("""
     <div style="text-align:center; padding: 0.5rem 0 0.2rem 0;">
@@ -668,30 +882,49 @@ with st.sidebar:
 
     SIDEBAR_TEST_CASES = [
         {"tier": "CRITICAL", "name": "SANAVBARI NIKITENKO",
-         "bio": {"date_of_birth": "1992-06-28", "gender": "F", "hair_color": "OTHD", "eye_color": "OTHD"},
+         "bio": {"date_of_birth": "1992-06-28", "gender": "F", "hair_color": "OTHD", "eye_color": "OTHD",
+             "client_image": "../test_images/NK-224TRezPqwzhQZ37exWxtX_sunglasses.jpg",
+             "fugitive_image": "../test_images/NK-224TRezPqwzhQZ37exWxtX.jpg"},
          "desc": "True fugitive, bio confirms (terrorism)"},
         {"tier": "CRITICAL", "name": "JIAN XIA",
-         "bio": {"date_of_birth": "1977-07-13", "gender": "M"},
+         "bio": {"date_of_birth": "1977-07-13", "gender": "M",
+             "client_image": "../test_images/NK-2Ld7pewCoLeyspMtVCMMMo_spectacles.jpg",
+             "fugitive_image": "../test_images/NK-2Ld7pewCoLeyspMtVCMMMo.jpg"},
          "desc": "True fugitive, bio confirms (homicide)"},
-        {"tier": "CRITICAL", "name": "ABDLU SAMBOLATOV",
-         "bio": {"date_of_birth": "1991-06-07", "gender": "M", "eye_color": "BRO"},
-         "desc": "Typo in name, bio still confirms"},
+        {"tier": "CRITICAL", "name": "ABDUL SAMBOLATOV",
+         "bio": {"date_of_birth": "1991-05-15", "gender": "M", "eye_color": "BRO",
+             "client_image": "../test_images/NK-4kBiCt6tGtxDDnaNdKvzfS.jpg",
+             "fugitive_image": "../test_images/NK-4kBiCt6tGtxDDnaNdKvzfS.jpg"},
+         "desc": "True fugitive, bio confirms (terrorism)"},
 
         {"tier": "HIGH RISK", "name": "ALEXANDER ZARUBIN",
-         "bio": {"date_of_birth": "1968-05-26", "gender": "M", "height_m": "1.88", "weight_kg": "120", "hair_color": "GRY"},
+         "bio": {"date_of_birth": "1968-05-26", "gender": "M", "height_m": "1.88", "weight_kg": "120", "hair_color": "GRY",
+             "client_image": "../test_images/NK-FMahhWCHmmK3Kq365WzyD9_spectacles.jpg",
+             "fugitive_image": "../test_images/NK-FMahhWCHmmK3Kq365WzyD9.jpg"},
          "desc": "Exact name, P3 mismatch, score ~0.73"},
         {"tier": "HIGH RISK", "name": "HENRY HARVEY",
-         "bio": {"date_of_birth": "1954-01-17", "gender": "M", "height_m": "1.65", "weight_kg": "82"},
+         "bio": {"date_of_birth": "1954-01-17", "gender": "M", "height_m": "1.65", "weight_kg": "82",
+             "client_image": "../test_images/000053.jpg"},
          "desc": "Common name, weak P1, score ~0.58"},
         {"tier": "HIGH RISK", "name": "SILVIO AKOEVA",
-         "bio": {"date_of_birth": "1977-10-31", "gender": "M", "hair_color": "GRYG", "eye_color": "BRO"},
+         "bio": {"date_of_birth": "1977-10-31", "gender": "M", "hair_color": "GRYG", "eye_color": "BRO",
+             "client_image": "../test_images/000055.jpg"},
          "desc": "Partial first-name match, score ~0.54"},
 
+        {"tier": "REVIEW", "name": "ABDLU SAMBOLATOV",
+         "bio": {"date_of_birth": "1991-06-07", "gender": "M", "eye_color": "BRO",
+             "client_image": "../test_images/NK-4kBiCt6tGtxDDnaNdKvzfS_sunglasses.jpg",
+             "fugitive_image": "../test_images/NK-4kBiCt6tGtxDDnaNdKvzfS.jpg"},
+         "desc": "Typo in name, partial bio match"},
+        {"tier": "REVIEW", "name": "RASUL PERALTA",
+         "bio": {"date_of_birth": "1982-11-04", "gender": "M", "height_m": "1.78", "weight_kg": "60",
+             "client_image": "../test_images/000052.jpg"},
+         "desc": "Unrelated name, partial surname overlap"},
         {"tier": "REVIEW", "name": "LEO UZ",
-         "bio": {"date_of_birth": "1994-02-02", "gender": "M"},
+         "bio": {"date_of_birth": "1994-02-02", "gender": "M", "client_image": "../test_images/000058.jpg"},
          "desc": "Very short name, low P1, score ~0.48"},
         {"tier": "REVIEW", "name": "EVIS PAZ",
-         "bio": {"date_of_birth": "1974-12-09", "gender": "M", "eye_color": "BLA"},
+         "bio": {"date_of_birth": "1974-12-09", "gender": "M", "eye_color": "BLA", "client_image": "../test_images/000060.jpg"},
          "desc": "Short name, low P1, score ~0.48"},
     ]
 
@@ -766,13 +999,17 @@ if "_auto_screen" in st.session_state and st.session_state._auto_screen:
     st.session_state._auto_screen = None
     _asc_name = _asc["name"]
     _asc_bio = _asc["bio"]
-    _asc_ctx, _asc_tier, _asc_score = screen(_asc_name, data, client_bio=_asc_bio)
+    _asc_ctx, _asc_tier, _asc_score = screen(_asc_name, data, client_bio=_asc_bio, client_image=_asc_bio.get('client_image'))
+    _asc_fid = parse_matched_id(_asc_ctx)
+    _asc_client_img = _asc_bio.get('client_image')
+    _asc_fug_img = resolve_fugitive_image_path(_asc_bio.get('fugitive_image'), _asc_fid)
     bio_summary = ", ".join(f"{k}={v}" for k, v in _asc_bio.items() if k != "full_name" and v)
     if not api_key:
         with st.chat_message("assistant"):
             st.warning("Enter your OpenAI API key in the sidebar for AI-powered explanations.")
             st.code(_asc_ctx, language=None)
             st.markdown(render_score_card(_asc_name, _asc_tier, _asc_score, _asc_ctx), unsafe_allow_html=True)
+            render_photo_pair(_asc_client_img, _asc_fug_img)
         st.session_state.messages.append({"role": "assistant", "content": f"```\n{_asc_ctx}\n```"})
     else:
         _asc_oai = OpenAI(api_key=api_key)
@@ -786,6 +1023,7 @@ if "_auto_screen" in st.session_state and st.session_state._auto_screen:
             _asc_stream = _asc_oai.chat.completions.create(model=model, messages=_asc_msgs, stream=True)
             _asc_resp = st.write_stream(_asc_stream)
             st.markdown(render_score_card(_asc_name, _asc_tier, _asc_score, _asc_ctx), unsafe_allow_html=True)
+            render_photo_pair(_asc_client_img, _asc_fug_img)
         st.session_state.messages.append({"role": "assistant", "content": _asc_resp})
     st.stop()
 
@@ -798,6 +1036,8 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
     user_msg = None
     run_screening = False
     screened_name = None
+    screen_client_img = None
+    screen_fugitive_img = None
 
     if st.session_state.pending_screen:
         pending = st.session_state.pending_screen
@@ -833,7 +1073,10 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
         if proceed_now or all_collected:
             client_bio = {'full_name': pending_name}
             client_bio.update(accumulated_bio)
-            rag_context, tier, score = screen(pending_name, data, client_bio=client_bio)
+            rag_context, tier, score = screen(pending_name, data, client_bio=client_bio, client_image=accumulated_bio.get('client_image'))
+            matched_id = parse_matched_id(rag_context)
+            screen_client_img = accumulated_bio.get('client_image')
+            screen_fugitive_img = resolve_fugitive_image_path(accumulated_bio.get('fugitive_image'), matched_id)
             missing = sorted(BIO_FIELDS - set(accumulated_bio.keys()))
             bio_str = ", ".join(f"{k}={v}" for k, v in accumulated_bio.items()) or "name only"
             missing_note = (f"\\n\\nNote: Missing biometric fields ({', '.join(missing)}) "
@@ -898,6 +1141,7 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
 
         if run_screening and rag_context and screened_name:
             st.markdown(render_score_card(screened_name, tier, score, rag_context), unsafe_allow_html=True)
+            render_photo_pair(screen_client_img, screen_fugitive_img)
 
         bio_from_response = parse_biometrics(response)
         if bio_from_response and st.session_state.pending_screen:
@@ -906,7 +1150,10 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
             if BIO_FIELDS.issubset(set(pending['bio'].keys())):
                 pn = pending['name']
                 client_bio = {'full_name': pn, **pending['bio']}
-                rag_context, tier, score = screen(pn, data, client_bio=client_bio)
+                rag_context, tier, score = screen(pn, data, client_bio=client_bio, client_image=pending['bio'].get('client_image'))
+                matched_id = parse_matched_id(rag_context)
+                follow_client_img = pending['bio'].get('client_image')
+                follow_fugitive_img = resolve_fugitive_image_path(pending['bio'].get('fugitive_image'), matched_id)
                 follow_msg = (
                     f'All biometrics collected for \"{pn}\". '
                     f'Results:\\n\\n{rag_context}\\n\\nExplain this screening result clearly.'
@@ -917,6 +1164,7 @@ if prompt := st.chat_input("Screen a client or ask about the fugitive database..
                     stream2 = oai_client.chat.completions.create(model=model, messages=msgs2, stream=True)
                     response2 = st.write_stream(stream2)
                     st.markdown(render_score_card(pn, tier, score, rag_context), unsafe_allow_html=True)
+                    render_photo_pair(follow_client_img, follow_fugitive_img)
                 st.session_state.messages.append({"role": "assistant", "content": response2})
 
         st.session_state.messages.append({"role": "assistant", "content": response})
