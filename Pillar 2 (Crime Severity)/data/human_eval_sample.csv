@@ -1,0 +1,382 @@
+id,name,sanctions_translated,bart_concept,lda_concept,kmeans_concept,sample_source,sample_category,human_label,,
+interpol-red-2017-188736,ALEXANDER TARASENKO,"""getting trained with the aim of terrorist activity;  participation in the activity of a terrorist organization""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-24975,SANTOS CRUZ MELENDEZ GARCIA,terrorist organizations,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2017-13414,NAZHMUDIN OMAEV,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2020-10014,AMINAT KHAKIMOVA,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-46920,FAIR ABDULMUTALIBOV,participation in terrorist activitiy of the terrorist organization.  participation in illegal armed formation.,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-111394,FARID MAMEDOV,participation in terrorist organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2014-64152,MUSA KHAMKHOEV,"getting trained with the aim of terrorist activity, participation in an illegal armed formation",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2016-62698,MARAT BAKHITOV,"""getting trained with the aim of terrorist activity; participation in the activity of a terrorist organization; assistance to terrorist activity; participation in the activity of an illegal armed formation""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-26047,FRANCIS TOMAS RUBIO SANTAMARIA,terrorist organizations,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2018-14941,KASUM SADURDINOV,organization of activity of the terrorist organization and participation in activity of such organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-68988,ILIAS OZDOEV,participation in the activity of a terrorist organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-36437,DANIIALBEK KHALITOV,"""participation in illegal armed formation; participation in terrorist organisation; training for implementation of terrorist activity""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-37792,NAILIA OMAROVA,participation in the activity of a terrorist organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+NK-gQgxZLEfM7AcxwL2ZHZeRK,MAGOMED IZMAILOV,getting trained with the aim of terrorist activityy,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2017-129702,OLEG VERKHOTIN,participation in the activity of terrorist organization.,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2016-91663,DZHABRAIL DOSKHOEV,"""participation in the activity of terrorist organization.
+participation in illegal armed formation.""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2020-11021,MAISARAT ALIEVA,"""participation in activity of a terrorist organization; participation in illegal armed formation.""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2019-14340,OSCAR ELINOR GAITAN GARCIA,terrorist organizations,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2021-66589,GASAN ISMAILOV,organization of activity of the terrorist organization and participation in activity of such organization. participation in illegal armed formation.,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2016-72849,ALISA CHMYKHOVA,participation in terrorist organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2016-78351,ISLAM NASIPOV,"participation in illegal armed formation, participation in the activity of a terrorist organization, getting trained with the aim of terrorist activity",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2016-68803,SHAKHRIYAR MAMEDOV,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation, getting trained with the aim of terrorist activity""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2018-48535,ADAM MUTSOLGOV,participation in the activity of a terrorist organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2017-6954,NURMAGOMED ALIKHANOV,"""1) getting trained for terrorist activity; 2) participation in terrorist organization; 3) participation in illegal armed formation""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2017-281870,KHUMOYUN ABDUKAYUMOV,assistance to terrorist activity - participation in the activity of a terrorist organization,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2021-5601,NASIIAT SELIMOVA,participation in a terrorist organization. participation in an illegal armed formation.,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2017-234448,YUNUS BUNGUEV,"participation in the activity of an illegal armed formation, participation in the activity of a terrorist organization, financing of terrorist activity, assistance to terrorist activity",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2018-56877,RASUL DIBIROV,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation""",terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2017-132697,RASULDZHON SAFAROV,participation in terrorist organisation,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2018-66972,ALEJANDRO JOSUE BARAHONA DOMINGUEZ,terrorist organizations,terrorism,terrorism,terrorism,high_agreement,terrorism,terrorism,,
+interpol-red-2013-69334,VIET HOANG NGUYEN,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2023-40388,TULIO DE JESUS PINTO GONZÁLEZ,kidnapping and murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2016-38306,SHAHID UL QAMAR,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2018-11650,SICELO SANDILE ZIKALALA,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2012-314594,HOREN TERTERYAN,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2015-53062,ISMAIL HAJI ISMAIL BALOCH,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2025-66566,SAMUEL NGUMO NJUGUNA,murder & attempted murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2007-40818,SALAHUDDIN MINTU,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2016-18217,WERNER GOMEZ SANDOVAL,"murder, attempted murder, illicit association.",homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2023-42686,MD MILON,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2015-32885,HTET PYAE AUNG,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2010-39461,DAVID AUGUSTO DE HERAS SOILAN,aggravated homicide in homogeneous and successive competition.,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2023-64410,JUAN RODAS MENDOZA,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2017-198817,ADONAY ALEXANDER VIGIL RAMIREZ,aggravated homicide,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-1997-2133,CHOUDHURY SHMB NUR,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2018-84066,BORNFACE MADUNUSA,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2017-279328,EVER ANTONIO LOVO RODAS,aggravated homicide,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2021-27700,BRAYAN MAURICIO SANCHEZ CRUZ,"""1) aggravated homicide
+2) aggravated terrorist organizations""",homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2014-36133,CHANGHUA ZHENG,"offence of robbery, offence of murder",homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2019-21264,GHULAM HAIDER,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2018-82558,NAWAJID ALI,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2005-17278,SHYAMAL RAO REDDY,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2014-60644,NIKOLAI GRIGORYEV,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2016-60269,ANIBAL ROBERTO GIMENEZ,homicide,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2015-64045,VUGAR SAFAROV,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2018-18368,DANIEL ELISEO MARTINEZ MARTINEZ,aggravated homicide,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2009-26330,UMAR JAVAID MALIK,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2023-30311,VERONICA MARIA SILVA BRAVO,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2022-46687,JOSÉ ISAÍAS HERNÁNDEZ CAMPOS,aggravated homicide,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2018-62801,SHAHBAZ HUSSAIN,murder,homicide,homicide,homicide,high_agreement,homicide,homicide,,
+interpol-red-2011-49607,ALEXEY MANUKHIN,misappropriation by fraud in especially large scale,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2016-2384,IVAYLO DIMITROV KIRILOV,"fraud, attempt of bribe-giving",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2010-102,SALMAN RASHEED,"embezzlement, fraud, misappropriation of pkr: 37,78,84,000/-",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2006-24592,KONSTANTIN STARODUBTSEV,"fraud, organization in a criminal community",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2011-40636,ANDREI KUBACHEV,large scale fraud and attempt on large scale fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2018-16025,VLADISLAV APAKOV,misappropriation or embezzlement in extremely large-scale,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2010-15616,VASILIY BERNIK,"especially large scale fraud committed by an organized group, participation in a criminal organization.",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2014-74522,MARTIN CECH,"fraud, misappropriation",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2013-8985,VIKTOR KHOLOD,extremely large-scale misappropriation by fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2006-24592,KONSTANTIN STARODUBTSEV,"fraud, organization in a criminal community",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2003-45278,SERGHEI ALEXANDROV,large-scale embezzlement,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2017-271991,SERGEI BORTSOV,extremely large scale fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2024-13278,RUSLAN RAMAZANOV,"""insurance fraud, committed by a group of persons by prior agreement.
+insurance fraud, committed by an organized group.
+attempted insurance fraud.
+petty bribery.
+extortion, committed by a group of persons by prior agreement on a large scale.
+extortion, committed by a group of persons by prior agreement on a particularly large scale.
+arbitrariness with the use of violence.""",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2014-71916,SERGEY SAPOV,"creation of criminal organization, large scale fraud",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2022-53790,TIGRAN AKOPOV,attempt of extremely large scale fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2010-9825,BARBORA CERNA,fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2013-42277,CARLOS ENRIQUE LOWENTHAL ARCEYUZ,"own fraud, whoever commits fraud by misleading another beggar by trick or deception will defraud him of his assets.",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2023-83654,ROMAN GOLDMAN,swindling by a person through his official position with the infliction of extremely large scale damage (2 episodes),financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2010-38161,YANA UNGURYAN,extremely large scale fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2012-340120,VICTOR DRACHEV,extremely large-scale misappropriation by fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2016-23323,MUSTAFA AVCI,"setting up an organized criminal group, smuggling, money laundering, circulating of products with the brand as trademark ones, which create prejudice to the owner of the trademark products, instigation to intellectual fraud and forgery to a private written agreement",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2018-57775,MALEKSABET EBRAHIMI,complicity in fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2003-11390,SERGHEI PODCIUFAROV,"large-scale embezzlement, blackmail, theft, damage of documents - -",financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2014-26427,MIKHAIL KOLOTOV,fraud,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2010-44909,KIRILL DEREEV,"""1) participation in criminal organization;
+2) large-scale misappropriation by fraud committed by organized criminal group
+3)illegal banking activity""",financial crime,financial crime,financial crime,high_agreement,financial crime,organised crime,,
+interpol-red-2015-85409,ELENA MELENTYEVA,extremely large scale fraud  (22 episodes),financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2013-7981,DMITRI BEREZHKOV,misappropriation by fraud in especially large scale,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2016-70097,NATHANIEL EHIROBO,advance fee fraud and other fraud related offences.,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2017-255194,MAKSIM VINOGRADOV,large scale bribe-taking by a functionary,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-1998-20764,IVAN VELINOV KITOV,fraud and misappropriation,financial crime,financial crime,financial crime,high_agreement,financial crime,financial crime,,
+interpol-red-2016-15777,HUMBERTO CRISTIAN CABEZA,transportation of narcotics,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-162996,JHONNY ANTONIO URBINA CABRERA,transportation of psychotropic narcotics and other controlled substances,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2013-16947,STANISLAV SEVDANILOV STAMENOV,traffick in drugs,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2015-37499,OLEG BEVZ,"""1)illegal sale of narcotic drugs in considerable amount;
+2)preparation for illegal sale of narcotic drugs in considerable amount;
+3)preparation for illegal sale of narcotic drugs in large amount""",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2021-48604,NAPOLEON ROBERTO GOCHEZ RODRIGUEZ,"illicit trafficking, in continuous mode.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-188099,SERAFIM PEREIRA ALMEIDA DA CRUZ,narcotics smuggling,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2023-61645,HARBHEJ SINGH,"offense related to narcotic drugs and psychotropic substances act, 1985 & possessing illegal weapon",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2016-41983,IRAKLIY GAVZYA,"""1) organization of attempted illegal drug sale (8 crimes); 2) narcotic drugs smuggling (2 crimes); 3)  organization of narcotic drugs smuggling""",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2015-29054,PARDEEP SINGH,"dealing in narcotic and psychotropic substances. - cheating, forgery, forgery of documents, use of forged documents, narcotic drugs and psychotropic substances act.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+NK-gQ9gwqAWpdat6RdFBLq4KZ,DARIUSZ PUCZKO,"participation in a criminal organisation, illicit trafficking in narcotic drugs and psychotropic substances - forgery of administrative documents,participation in a criminal organization, fencing stolen goods of large value",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-192632,ALBERTO CARDOZO MOLINA,"integrating an illicit association dedicated to the transportation of narcotics, aggravated by the participation of three or more organized people.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2012-306719,KHOLAKHMAD BORONOV,attempt of illegal sale of narcotic drugs committed by a group of persons in a preliminary conspiracy with regard to large amounts of narcotic drugs.,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2020-37251,MIGUEL GONZALEZ GONZALEZ,"qualified smuggling because it involves narcotics unequivocally destined to be marketed, aggravated by the number of people involved and by the use of a means of air transport on an unauthorized flight, in actual competition with the crime of attempted transportation of narcotics.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2019-59291,MARTIN RICARDO BARRETO,smuggling of imported narcotics aggravated to an attempted level.,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-131907,OSCAR ALBERTO ALEJANDRO DIAZ,"illicit association dedicated to narcotic smuggling, aggravated by the participation of two or more organized people, by the quantity of narcotics and by the amount of merchandise.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-199024,HECTOR AUGUSTO BARRIENTOS BLANCO,"money laundering, trafficking in psychotropic narcotics and other controlled substances, international modality.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+NK-BzVSaBLnr4CCKibruzEqiW,OLIVER SINIARSKI-CZAPLICKI,"""illicit production, processing of, trafficking or trading in narcotic drugs, precursors, narcotic replacement drugs and psychotropic substances; participation in a criminal organisation or an association designed to commit crimes""",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2012-321306,THI HUONG DO,illegally trading narcotic drug and organizing illegal use of narcotic drug,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2010-18591,SULIMAN INDERBIEV,illegal storage of narcotic drugs,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2022-81321,ROMANEO KALIDIEN,"""violating the narcotic drugs act (law of 12 february 1998 laying down the law on narcotic drugs, as it reads after amendments made to it)
+participation in criminal organization (art.188 surinamese criminal code)""",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2013-65314,HUNG MANH TRAN,illegal trading in narcotic drugs,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2009-18185,SHIR COHEN,possession of narcotic drugs,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2010-1482,IVAN LAUTENSHLEGER,illegal transportation of narcotic drugs,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+NK-Zf3qsnbW5ppcrmcYLvErBL,JACEK TOMASZ ZWOLAK,"illicit manufacture, processing and smuggling of narcotic drugs, precursors, substitute substances or psychotropic substances or trafficking in them, participation in a criminal organisation or union aiming at committing offences",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-126587,ANTON ZAKHAROV,"creation of a criminal community (criminal organization) and participation therein, smuggling narcotic agents, psychotropic substances, precursors and analogues thereof, plants containing narcotic agents, psychotropic substances or their precursors, or parts thereof containing narcotic agents, psychotropic substances or their precursors, instruments or equipment which are under special control and are used for making narcotic agents or psychotropic substances, illegal making, sale or dispatch of narcotic drugs, psychotropic substances or analogues thereof, as well as illegal sale or dispatch of plants containing narcotics or psychotropic substances, or parts thereof containing narcotics or psychotropic substances",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2015-52541,JOUMA JOUMA,"""1) producing, processing acquiring and keeping of narcotic substances without a due permit; 2) offence against the customs regime""",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+NK-bmxxtNC9bobBjekfF78LLX,ADAM FRANCISZEK UTSCHIK,"illegal trafficking in narcotic drugs, non-paying alimony",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2023-44256,JHONNY ZEGARRA QUISPE,trafficking of controlled substances,narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2020-37259,PEDRO VARGAS HURTADO,"qualified smuggling because it involves narcotics unequivocally destined to be marketed, aggravated by the number of people involved and by the use of a means of air transport on an unauthorized flight, in actual competition with the crime of attempted transportation of narcotics.",narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2017-190800,SANTIAGO OSEAS GAITAN BOLAINEZ,organized crime and illegal transportation of psychotropic narcotics and other controlled substances (international),narcotics,narcotics,narcotics,high_agreement,narcotics,narcotics,,
+interpol-red-2016-27127,RUSLAN TCUEV,"participation in an illegal armed formation,",weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2019-53357,DZHANNET DADAEVA,participation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2017-168411,UMALAT GALIMOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2017-189167,RASHID MALAEV,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-64396,MUSAIB DZHUM-DZHUM,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2014-63331,VAKHA SATUEV,"""robbery; banditry; illegal acquisition, transfer, storage, transportation or bearing of firearms, explosives and explosive devices""",weapons,armed formation,mixed,single_method_bart_kmeans,weapons,weapons,,
+interpol-red-2016-13421,ZELIMKHAN DUKHIGOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2018-67194,RUSTAM KHUSNIIAROV,participation in an armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2017-6019,KHAMZAT MURDALOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-50548,ASKER SHAMSHIDOV,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-56515,WENHUI GUO,kidnapping for ransom and possession of a weapon without proper legal authorization,weapons,armed formation,mixed,single_method_bart_kmeans,weapons,weapons,,
+interpol-red-2017-286866,USMAN CHAMAEV,participation in the activity of an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2018-41419,RADIMA GADAEVA,participation in the activity of an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2015-74706,HASAN AYDAMIROV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2021-59885,RUSLAN GAZIEV,"participation in illegal armed formation, partici[ation in the activity of a terrorist organization",terrorism,terrorism,weapons,single_method_bart_kmeans,weapons,armed formation,,_
+interpol-red-2017-191991,LINDA ABEKEROVA,partisipation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+NK-NK8HmYVgnTSXbRb7q9TDPM,MAGOMED ABDULAEV,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2017-7860,SHAPI SHAKHBANOV,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-40144,ELVIRA ABDULAZIMOVA,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2018-68558,SHAMIL MIRZOEV,participation in the activity of an  illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-61919,SUVAR RAMAZANOVA,participation in illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2015-67756,IMAM USMANOV,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2009-25033,TEMUR KUDZIEV,"""participation in criminal community; 
+participation in a stable armed group; attempted murder; murder; 
+encroachment on the life of an officer of a law-enforcement agency (3 episodes); 
+illegal acquisition, transfer, sale, storage, transportation, or bearing of firearms, its basic parts, ammunition, explosives, and explosive devices.""",weapons,armed formation,mixed,single_method_bart_kmeans,weapons,organised crime,,
+interpol-red-2005-19818,GRISHA ALEKSANYAN,aggravated murder and illegal possession of weapons,weapons,homicide,mixed,single_method_bart_kmeans,weapons,homicide,,
+interpol-red-2017-3795,UMALT ESAMBAEV,participation in the activity of an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-38373,ASLAMBEK KANGIEV,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2012-321943,MURAT HAPAEV,participation in illegal armed formation and illegal possession or usage of firearms/explosive devices,weapons,armed formation,mixed,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2016-4563,ABDUSALAM RADZHABOV,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2018-89585,GIAS UDDIN,voluntarily causing grievous hurt by dangerous weapons or means,weapons,organised crime,mixed,single_method_bart_kmeans,weapons,weapons,,
+interpol-red-2021-27620,RAVZAT ABDULKERIMOVA,participation in the activity of an illegal armed formation,weapons,armed formation,weapons,single_method_bart_kmeans,weapons,armed formation,,
+interpol-red-2021-68793,JUAN NATIVIDAD GUEVARA CATALAN,"transfer and reception of minors for the purposes of sexual exploitation aggravated by the participation of three or more people, as co-authors",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2021-66961,CARLOS ARMANDO FUENTES ROMERO,aggravated extortion,financial crime,sexual crime,mixed,single_method_lda,sexual crime,mixed,,
+interpol-red-2000-7936,VALERY ALEXEEV,"infliction of damage on property by abuse of trust, abuse of official powers, money laundering",financial crime,sexual crime,financial crime,single_method_lda,sexual crime,financial crime,,
+interpol-red-2017-282276,CINDY MARISSELA ORELLANA DEL CID,terrorist organizations and aggravated extortion,terrorism,sexual crime,mixed,single_method_lda,sexual crime,terrorism,,
+interpol-red-2012-302610,FERNANDO CORDEIRO,"""1) aggravated rape of a child 
+2) rape of a child with force  
+3) indecent assault and battery of a child under 14""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2011-63180,MARGARITO ANDRES,"""1) sexual battery on a person less than 12 years of age (2 counts)
+2) lewd or lascivious molestation
+3) lewd or lascivious battery""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2025-82424,ROBERT DENIS GONZALEZ,"""1 - rape
+
+2 - assault by penetration
+
+3 - defilement of a girl under sixteen""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2012-307783,JOHNATAN VICTOR HERRERA,aggravated sexual assault of a child - sexual assault of a child under 17 years of age,assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2018-61334,FRANCISCO CRUZ,sexual assault on a minor or incapable,assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2014-41255,SULEIMAN MANSUROV,rape against minor,assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+NK-UBQxaRmgU8thVjnJJuW5QY,CARIS AYALA,"""1) murder 
+2) felony murder while committing cruelty to children in the first degree, by inflicting blunt force against a child
+3) felony murder while committing cruelty to children in the second degree, by failing to seek medical attention for a child
+4) felony murder while committing aggravated assault
+5) cruelty to children in the first degree, by inflicting blunt force against a child
+6) cruelty to children in the second degree, by failing to seek medical attention for a child
+7) aggravated assault""",homicide,sexual crime,mixed,single_method_lda,sexual crime,homicide,,
+interpol-red-2024-24034,ALIREZA MANSOURIKASHANI,"""aggravated fraud
+aggravated money laundering""",financial crime,sexual crime,financial crime,single_method_lda,sexual crime,financial crime,,
+interpol-red-2009-40603,MURAD HANIF,"""1) rape of an unconscious victim (2 counts)
+2) involuntary deviate sexual intercourse with an unconscious victim (1 count)
+3) sexual assault (2 counts)
+4) indecent assault with an unconscious victim (2 counts)
+5) indecent assault without victim consent (2 counts)""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2011-24302,JOHN CRISTIAN SCHKADE,sexual assault,assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2014-55661,NOOR MOHAMMAD KHASAYN ZADA,violent sexual against minors,assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2006-13929,SHAWN EUGENE SULLIVAN,"""criminal sexual conduct, 3rd degree - sexual penetration with a female 13-16 years old when the perpetrator is more than 4 years older than the victim ; b) criminal sexual conduct, 3rd degree - sexual penetration with a juvenile female knowing the juvenile was physically helpless - criminal sexual conduct, 2nd degree (2 counts)""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2019-72153,MARINO RIOS ARELLANO,illicit association as co-author and extortion as necessary participant.,financial crime,sexual crime,mixed,single_method_lda,sexual crime,organised crime,,
+interpol-red-2021-42532,MOUSTAPHA EL MANSOURI,""". scam 
+. misuse of the property or credit of an SARL by a manager for personal purposes.""",financial crime,sexual crime,mixed,single_method_lda,sexual crime,financial crime,,
+interpol-red-2018-90382,ILIAS OOGANBEKOVICH SATTAROV,complicity in the use by an official of his official postion contrary to the interests of the service,narcotics,sexual crime,mixed,single_method_lda,sexual crime,financial crime,,
+interpol-red-2017-280668,FLOR ESTER MEDRANO CAMPOS,terrorist organizations and aggravated extortion,terrorism,sexual crime,mixed,single_method_lda,sexual crime,terrorism,,
+interpol-red-2011-36373,BADIS MAZOUNI,"""- fraud carried out by an organized gang 
+- organized gang laundering""",financial crime,sexual crime,financial crime,single_method_lda,sexual crime,financial crime, ,
+NK-ig8f4sk9dmiB8drTM2tMGj,BARTLOMIEJ TOMASZ MORAWSKI,"sexual offence, rape",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2025-86779,INONE BENARROCH,"""scam carried out by an organized gang
+
+laundering: participation in a placement operation, concealment or
+conversion of the proceeds of a fraud committed by an organized gang
+
+participation in a criminal conspiracy with a view to preparing an offense punishable by 10 years of imprisonment.""",financial crime,sexual crime,financial crime,single_method_lda,sexual crime,financial crime,,
+interpol-red-2023-72726,MARIO MARTINOVIC,"gross fraud, gross money laundering offence",financial crime,sexual crime,financial crime,single_method_lda,sexual crime,financial crime,,
+NK-86nZDZ9rTG3HArZXyNyDqZ,RODOLFO RICARDO FINKELSTEIN,"""(1) criminal sexual conduct, 1st degree (2 counts);  
+(2) criminal sexual conduct, 4th degree (force or coercion) (5 counts)""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2025-9385,MOHAMED GHARBI,organized gang robbery with weapon,weapons,sexual crime,mixed,single_method_lda,sexual crime,organised crime,,
+interpol-red-2013-70296,ZEID GUSEYNLI,"""1) rape of juvenile (under 14 years old), committed with threat of violence (3 episodes);
+2) violent sexual actions, committed with threat of violence  against obvious juvenile.""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2023-14388,XUILI WANG,"""participating in a criminal organization, forgery, embezzlement and swindling (art. 188; 278; 381 and 386 of the suriname penal code), violation of art. 2 and 3 of the prevention of smuggling act, art. 16; 44; 45 and 52 of the forest management act, art. 1; 3 and 7 of the timber export act, art. 4 and 7 of the timber export duty act in conjunction with art. 1 paragraph 1 under 20; 24; 25 and 26 and art. 2; 3 and 4 of the economic offences act.""",financial crime,sexual crime,mixed,single_method_lda,sexual crime,financial crime,,
+interpol-red-2025-24848,ABDELKADER BENOMAR,"""- fraud carried out by an organized gang
+- attempted fraud carried out by an organized gang
+- money laundering: assistance with an investment operation, concealment or
+conversion of the proceeds of a fraud committed by an organized gang
+
+- participation in a criminal conspiracy with a view to preparing a crime
+punished by 10 years of imprisonment.""",financial crime,sexual crime,financial crime,single_method_lda,sexual crime,financial crime,,
+interpol-red-2012-333743,RENE GERARDO VASQUEZ,"""1) predatory sexual assault against a child (8 counts)
+2) criminal sexual act in the first degree (4 counts)
+3) use of a child in a sexual performance as a sex motivated felony (8 counts)
+4) rape in the first degree (4 counts)
+5) sex abuse in the first degree 
+6) possessing a sexual performance by a child (100 counts)""",assault,sexual crime,assault,single_method_lda,sexual crime,sexual crime,,
+interpol-red-2012-3032,HONG HAI DOAN,intentionally inflicting injury on or causing harm to the health of other persons,assault,organised crime,mixed,single_method_lda,organised crime,assault,,
+interpol-red-2019-32367,ANDREI CRISTIANU,"""1. punishment for murder
+2. punishment for culpable homicide not amounting to murder""",homicide,organised crime,mixed,single_method_lda,organised crime,homicide,,
+Q4235170,PAVEL KOSOLAPOV,perpetration of an explosion,assault,organised crime,mixed,single_method_lda,organised crime,weapons,,
+interpol-red-2014-6986,ANDREI STANKEVICH,"murder, intentional infliction a grave injuries to a health.",homicide,organised crime,mixed,single_method_lda,organised crime,homicide,,
+interpol-red-2002-4162,TAHER ANSARI,"criminal conspiracy, murder, attempted murder, terrorism, possession of illegal arms, causing explosion with intent to endanger life and property - criminal conspiracy, murder, attempted murder, damaging public property using explosives, possession of prohibited weapons and terrorist activities",terrorism,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+interpol-red-2017-281576,GRAYR MAYTESYAN,hooliganism by a group of people,assault,organised crime,mixed,single_method_lda,organised crime,assault,,
+interpol-red-2017-4838,ELIZABETH CLEYDY PERALTA MARTE,counterfeit currency,financial crime,organised crime,mixed,single_method_lda,organised crime,financial crime,,
+interpol-red-2004-41980,DMITRIY BOGDANOV,"assault, hooliganism, damage of property, involvement of a minor in the commission of a crime,",assault,organised crime,mixed,single_method_lda,organised crime,assault,,
+interpol-red-2023-22923,HÉCTOR HUMBERTO GONZÁLEZ,illicit groups,narcotics,organised crime,mixed,single_method_lda,organised crime,organised crime,,
+interpol-red-2011-38657,CRISTOBAL RAMIREZ,conspiracy to possess with intent to distribute in excess of 5 kilograms of cocaine,narcotics,organised crime,mixed,single_method_lda,organised crime,narcotics,,
+interpol-red-2014-29434,ESTEBAN DANUBIO MATAMOROS CASTILLO,"conspiracy to trade, illicit trafficking and storage, forced disappearance, obstruction of justice.",narcotics,organised crime,narcotics,single_method_lda,organised crime,narcotics,,
+interpol-red-2004-25243,SHARIF KHAN SHARIFKHAN PATHAN,"criminal conspiracy, murder, attempted murder, kidnapping, damaging public property using explosives, cheating, extortion, threatening behaviour, causing serious bodily injury, resisting a police officer, forgery of document, aiding and abetting a criminal, unlawful imprisonment, possession of prohibited weapons and terrorist activities. - criminal conspiracy, murder, attempted murder, kidnapping, damaging public property using explosives, cheating, extortion, threatening behaviour, causing serious bodily injury, resisting a police officer, forgery of document, aiding and abetting a criminal, unlawful imprisonment, possession of prohibited weapons and terrorist activities",terrorism,organised crime,mixed,single_method_lda,organised crime,homicide,,
+interpol-red-2016-74272,SHAHUL HAMEED SHEIK DAWOOD,"robbery or dacoity, with attempt to cause death or grievous hurt, assault or criminal force to deter public servant from discharge of his duty, attempt to murder, punishment for theft, criminal conspiracy, acts done by several persons in furtherance of common intention, penalties for trespass or damange in reserved forest and acts prohibited in such forest, any person who causes any damage, either willfully or negligently in felling or cutting any trees or dragging any timber, power to make rules to regulate the transit possession of timber and other forest produce, mischief causing damage to public property, condition for import, export and movement of sandal wood or red sanders wood.",assault,organised crime,mixed,single_method_lda,organised crime,assault,,
+interpol-red-2013-52034,OMAR HAMAHA,"""1) between december 14, 2008 and april 23, 2009, at or near
+niamey, niger and elsewhere in niger and mali, did take robert fowler hostage for the benefit or, at the direction of or in association with a terrorist group. 2) between december 14, 2008 and april 23, 2009, at or near niamey, niger and elsewhere in niger and mali, did take louis guay hostage for the benefit or, at the direction of or in association with a terrorist group""",terrorism,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+interpol-red-2011-12659,LUIS AGUSTIN GUAMAN,murder (2 counts) - assault and battery - injury causing death/ manslaughter,homicide,organised crime,mixed,single_method_lda,organised crime,homicide,,
+interpol-red-2012-314015,SUONH CHAU,property robbery,financial crime,organised crime,mixed,single_method_lda,organised crime,assault,,
+interpol-red-2010-44010,MAJOR IQBAL,"under sections 302, 307, 325, 326, 364, 343, 353, 332, 419, 427, 121, 121(a), 122, 333, 435, 397, 465 of indian penal code - criminal conspiracy, waging war against country , member of terrorist gang/ organisation.",terrorism,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+NK-LWpMLqQDjqEx69xHxii7Ps,MORIS ALEXANDER BERCIAN MANCHON,illicit trafficking,narcotics,organised crime,narcotics,single_method_lda,organised crime,narcotics,,
+interpol-red-2004-2676,MOHAMMED BASHIR CHANEPARAMBIL,"murder, attempt to commit murder, conspiracy, damaging public property by using explosives, possession of prohibited arms, committing a terrorist act",terrorism,organised crime,mixed,single_method_lda,organised crime,homicide,,
+interpol-red-2016-53665,SANATOMBA SINGH ANGOM,"""1.punishment of criminal conspiracy u/s 120b indian penal code,
+2.waging, or attempting to wage war, or abetting waging of war, against the government of india u/s 121 indian penal code , 
+3.conspiracy to commit offences punishable by section 121 u/s 121a indian penal code,
+4.punishment for murder u/s 302 indian penal code, 
+5.attempt to murder u/s 307 indian penal code, 
+6.punishment for terrorist act u/s 16 unlawful activities(prevention)act 1967,
+7.punishment for being member of terrorist gang or organization u/s 20 unlawful activities(prevention)act 1967,
+8.punishment for certain offences  u/s 25 arms act 1959 ,
+9.punishment for possessing arms, etc., with intent to use them for unlawful purpose u/s 27 arms act 1959,
+10.punishment for making or possessing explosives under suspicious circumstances u/s 5 explosives substance act 1908.""",weapons,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+interpol-red-2014-58914,MOHAMMED MONIR BHUYAN,"conspiracy, abetment for printing, distribution and possession of counterfeit/fake indian currency notes. cheating and forgery. illegal entry and stay in india",financial crime,organised crime,mixed,single_method_lda,organised crime,financial crime,,
+interpol-red-2012-315350,THI HOAN NGUYEN,illegally trade in narcotics,narcotics,organised crime,narcotics,single_method_lda,organised crime,narcotics,,
+NK-ExTzKeLpcMsAb9yGiY5S3j,OLEG VYACHESLAVOVICH KUCHEROV,participation in a criminal organisation,narcotics,organised crime,mixed,single_method_lda,organised crime,organised crime,,
+interpol-red-2012-329910,MARIJIT SINGH NARENGBAM,"criminal conspiracy, waging war against country, punishment for terrorist act, member of terrorist gang/ organisation.",terrorism,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+interpol-red-2015-25643,ANTONINO COLOSI,"""conspiracy to commit forgery, counterfeiting an official seal,
+aggravated fraud, receiving stolen goods, fraudulent bankruptcy, financial offences, slander.""",financial crime,organised crime,financial crime,single_method_lda,organised crime,financial crime,,
+interpol-red-2012-315552,MINH TUAN DAO,illegally trading in narcotics,narcotics,organised crime,narcotics,single_method_lda,organised crime,narcotics,,
+interpol-red-2016-53970,SOMORENDRO SINGH THOUDAM,"""1.punishment of criminal conspiracy
+2.waging, or attempting to wage war, or abetting waging of war, against the government of india 
+3.conspiracy to commit offences 
+4.punishment for murder 
+5.attempt to murder 
+6.punishment for terrorist
+7.punishment for being member of terrorist gang or organization
+8.punishment for certain offences  
+9.punishment for possessing arms, etc., with intent to use them for unlawful purpose
+10.punishment for making or possessing explosives under suspicious circumstances""",terrorism,organised crime,mixed,single_method_lda,organised crime,organised crime,,
+interpol-red-2019-128415,MALKIAT SINGH,"""under indian penal code, 1860:
+section 121: waging of attempting to wage war, or abetting the waging of war, against the government of india.
+section 121-a conspiring to commit certain offences against the state section 120-b: punishment of criminal conspiracy.
+
+under unlawful activities(prevention) act, 1967:
+section 10 penalty for being member of an unlawful etc. association,
+section 13 punishment for unlawful activities. 
+section 15 terrorist act.
+section 16 : punishment for terrorist act. 
+section 17: punishment for raising funds for terrorist act.
+section 18: punishment for conspiracy, etc. 
+
+under the arms act, 1959:
+punishment for certain offences.""",terrorism,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+interpol-red-2006-18198,SALIM HAJI IBRAHIM SALIM,"""criminal conspiracy;  terrorist acts;  murder;  attempted murder;  dacoity;  incitement to communal hatred;  disrupting railway traffic;  damaging public property by assaulting and setting fire to a train.""",terrorism,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+interpol-red-2018-34596,KULDEEP SINGH,"""punishment for certain offences— whoever manufactures, sells, transfers, converts, repairs, tests or proves, or exposes or offers for sale or transfer, or has in his possession for sale, transfer, conversion, repair, test or proof, any arms; punishment for raising funds for terrorist act; punishment for conspiracy; punishment for being member of terrorist gang or organisation.""",weapons,organised crime,mixed,single_method_lda,organised crime,terrorism,,
+NK-ASgzXkxhWYtMZikD6AVGcG,MOVSAR KALAEV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+NK-Y8dvx5wPUxo5HxB4uKx3Pu,RASUL AVDUEV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2016-68538,GYULNAZ ISMAILOVA,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2019-47970,MAKSUDALI SALIKHOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2009-25033,TEMUR KUDZIEV,"""participation in criminal community; 
+participation in a stable armed group; attempted murder; murder; 
+encroachment on the life of an officer of a law-enforcement agency (3 episodes); 
+illegal acquisition, transfer, sale, storage, transportation, or bearing of firearms, its basic parts, ammunition, explosives, and explosive devices.""",weapons,armed formation,mixed,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-173428,EDGAR AKAYCHIKOV,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2018-31018,ISLAM MADANOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-172816,RASHIDKHAN ABDURAKHMANOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-163638,IMAM KHINABIEV,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2019-38437,GYULKHANYM BABAEVA,particpation in an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2020-51250,FATIMA KHAIBULAEVA,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2021-65344,MUKHUMAD BATUKAEV,participation in the activity of an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2018-55124,PATINA MISRIKHANOVA,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2016-71159,MOHAMED AKRA,"trafficking in high risk drugs, attempt to international traffick of high risk drugs",narcotics,armed formation,narcotics,single_method_lda,armed formation,narcotics,,
+interpol-red-2021-55899,UVAYS KADYROV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-168405,MUSLIM AISULTANOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2018-76585,AYSHAT RZAEVA,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2015-41978,BIYSOLTAN MOLLAEV,participation in illegal armed  formation (2 episodes),weapons,armed formation,mixed,single_method_lda,armed formation,armed formation,,
+interpol-red-2022-79816,CHINGIZ DZHAKHANGIROV,"""the attempted murder committed by a group of persons by previous concert; 
+illegal acquisition, transfer, storage, transportation or bearing of firearms and its basic parts.""",weapons,armed formation,mixed,single_method_lda,armed formation,armed formation,,
+interpol-red-2020-68978,ADAM KHADUSHKAEV,"""attempt at murder, illegal acquisition, storage, transportation of firearms and its basic parts; vandalism; participation in  illegal armed formation; participation in terrorist organization.""",terrorism,armed formation,mixed,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-188956,SULIM GAYRBEKOV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2016-74588,RAZIYAT SALIKHOVA,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-135459,YAKSUB OMAROV,participation in the activity of an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2016-49585,MARAT SALAVATOV,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-163644,ELINA TAMADAEVA,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2015-41982,SALIMKHAN ATTUTAROV,participation in illegal armed  formation (2 episodes),weapons,armed formation,mixed,single_method_lda,armed formation,armed formation,,
+interpol-red-2019-111406,MARAL KAKVAEVA,participation in illegal armed formation.,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2017-132711,GADZHIMET ASLANBEKOV,"""participation in the activity of an armed formation;""",weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2021-37726,KHASAN TURSHAEV,participation in illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2015-18608,ZAMIR AGAROV,participation in an illegal armed formation,weapons,armed formation,weapons,single_method_lda,armed formation,armed formation,,
+interpol-red-2023-42211,ROBERTO CARLOS GUTIÉRREZ GARCÍA,rape of a minor or incapacitated child,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2016-19999,ILGAR RUSTAMOV,violent actions of sexual character against minors,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2016-91107,SAMUEL FERNANDEZ HUAMAN,sexual abuse,assault,terrorism,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2024-35331,RAMEISH TAVON GRIFFITHS,wounding with intent,assault,narcotics,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2013-44068,HIEN CHI DUONG-TRAN,"""1) assault in the second degree causing serious physical injury
+2) assault in the third degree causing physical injury to a child 10 years or younger (2 counts)
+3) criminal mistreatment in the first degree by a person responsible for supervision over a dependent person causing physical injury (2 counts)
+4) criminal mistreatment in the first degree by a person responsible for supervision over a dependent person withholding necessary and adequate medical attention (2 counts)
+5) criminal mistreatment in the first degree by a person responsible for supervision over a dependent person withholding necessary and adequate food""",assault,homicide,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2015-72639,TUDOR DRUTA,complicity to aggravated robbery followed by the victim’s decease,assault,homicide,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2012-333743,RENE GERARDO VASQUEZ,"""1) predatory sexual assault against a child (8 counts)
+2) criminal sexual act in the first degree (4 counts)
+3) use of a child in a sexual performance as a sex motivated felony (8 counts)
+4) rape in the first degree (4 counts)
+5) sex abuse in the first degree 
+6) possessing a sexual performance by a child (100 counts)""",assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2009-24002,KAREL SROUBEK,"disorderly conduct, damaging of another's property, attack of an law enforcement officer",assault,terrorism,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2005-35455,DIMITRIOUS AMASIADIS,"""unlawful flight to avoid confinement (federal charge - one count) - (1) predatory criminal sexual assault of a child less than 13 years old;  
+(2)  aggravated criminal sexual abuse of a child less than 13 years old - violation of bail bond;""",assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2016-61605,MUHAMMAD HANIF,"criminal code of canada - sexual assault (x2) 271c.c., forcible confinement (x2) 279(2) c.c, sexual interference (x2) c.c. 151, invitation to sexual touching c.c. 152. seven charge in all.",assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2019-51727,JULIO OMAR CALIVAR,seriously outrageous sexual abuse,assault,terrorism,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2015-21565,DANIIL ZAYTSEV,aggravated assault,assault,homicide,mixed,single_method_bart_kmeans,assault,assault,,
+NK-cuFXTQdyQ2DMacMnWJaegw,SLAWOMIR ARSENIUK,"rape, sexual use of dependency, sexual intercourse or another sexual act with a minor under 15 years of age",assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2022-30281,TAMARA MALENIC,"""- subtraction of child by ascendant
+- no representation of children""",assault,sexual crime,mixed,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2010-42556,VIKTOR KINYULIS,assault with robbery,assault,homicide,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2018-19983,FANOR MINCHACA INOCENTE,"sexual abuse aggravated by its commission with carnal access and by being committed against a minor under eighteen years of age, taking advantage of the pre-existing cohabitation situation",assault,terrorism,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2022-35500,MANUEL JOSE LOPEZ BONELLI,sexual assault with aggravated sentence,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2022-67202,LUIS ALBERTO BRAVO ALEJO,"rape, girl, boy and adolescent with aggravating circumstances",assault,armed formation,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2016-12727,SERGIO EDUARDO GIMENEZ,sexual abuse with carnal access aggravated by being to the detriment of a minor under eighteen years of age taking advantage of repeated cohabitation,assault,terrorism,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2019-77515,MARIO GABRIEL TORRES,"""simple sexual abuse; seriously outrageous sexual abuse aggravated by being committed by the person in charge of guardianship and taking advantage of the pre-existing situation of coexistence in ideal competition with corruption of minors aggravated by the situation of pre-existing coexistence and sexual abuse with carnal access aggravated by being committed by the person in charge of guardianship and taking advantage of the pre-existing situation of coexistence in ideal competition with corruption of minors aggravated, all of which materially coincide with each other.""",assault,terrorism,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2015-4893,BUTCHANG TIMLOH NKEM,failure to comply with condition of recognizance - sexual assault,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2020-12921,MILOJKO KOVACEVIC,crimes against humanity,assault,terrorism,mixed,single_method_bart_kmeans,assault,mixed,,
+interpol-red-2012-331038,ANTON MALOVICHKO,intentional infliction of a grave injury what caused victim’s death.,assault,organised crime,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2024-45644,BALDEMAR MARTÍN GODÍNEZ,rape,assault,narcotics,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2013-46051,ELVARDI LASHKHIA,rape using threats and violence against minor person,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2023-51107,DAVID LEVY,rape of a 14 year old minor,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2019-92820,AVELINO OLARTE GONZALES,"sexual abuse with carnal access aggravated by being committed by the guardian and taking advantage of the pre-existing coexistence with a minor under 18 years of age, repeated.",assault,terrorism,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2023-41263,EDWIN ALFREDO ESPINOZA CONDORI,rape - sexual crimes,assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
+interpol-red-2011-49663,JOSHUA DARIO CONSTANTE,"""1) robbery with use of a firearm and loss of property exceeding $2,500,000 (3 counts)
+2) assault with a deadly weapon with use of a firearm (3 counts)
+3) false imprisonment with use of a firearm (3 counts)
+4) terrorist threats with use of a firearm (3 counts)
+5) burglary 
+6) kidnapping to commit robbery or rape with use of a firearm (3 counts)
+7) assault with intent to commit rape (2 counts)
+8) sexual battery (2 counts)""",assault,assault,mixed,single_method_bart_kmeans,assault,assault,,
+interpol-red-2021-68793,JUAN NATIVIDAD GUEVARA CATALAN,"transfer and reception of minors for the purposes of sexual exploitation aggravated by the participation of three or more people, as co-authors",assault,sexual crime,assault,single_method_bart_kmeans,assault,sexual crime,,
