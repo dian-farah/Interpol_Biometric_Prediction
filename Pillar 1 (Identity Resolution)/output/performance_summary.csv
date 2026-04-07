@@ -1,9 +1,0 @@
-Component,Metric,Value,Direction
-Identity Resolution (TF-IDF char n-gram),MAP (Mean Avg Precision),0.8857,↑ higher better
-Identity Resolution (TF-IDF char n-gram),Recall@1,0.8160,↑
-Identity Resolution (TF-IDF char n-gram),Recall@3,0.9540,↑
-Identity Resolution (TF-IDF char n-gram),Mean cosine (positives),0.8754,↑
-Identity Resolution (TF-IDF char n-gram),Mean cosine (negatives),0.0213,↓ lower better
-Identity Resolution — SBERT baseline,MAP (Mean Avg Precision),0.8794,↑ higher better
-Identity Resolution — SBERT baseline,Recall@1,0.8120,↑
-Identity Resolution — SBERT baseline,Recall@3,0.9430,↑
