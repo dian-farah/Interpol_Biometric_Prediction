@@ -1,0 +1,434 @@
+id,sanctions_translated,human_label
+interpol-red-2017-188736,"""getting trained with the aim of terrorist activity;  participation in the activity of a terrorist organization""",terrorism
+interpol-red-2019-24975,terrorist organizations,terrorism
+interpol-red-2017-13414,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation""",terrorism
+interpol-red-2020-10014,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation""",terrorism
+interpol-red-2019-46920,participation in terrorist activitiy of the terrorist organization.  participation in illegal armed formation.,terrorism
+interpol-red-2019-111394,participation in terrorist organization,terrorism
+interpol-red-2014-64152,"getting trained with the aim of terrorist activity, participation in an illegal armed formation",terrorism
+interpol-red-2016-62698,"""getting trained with the aim of terrorist activity; participation in the activity of a terrorist organization; assistance to terrorist activity; participation in the activity of an illegal armed formation""",terrorism
+interpol-red-2019-26047,terrorist organizations,terrorism
+interpol-red-2018-14941,organization of activity of the terrorist organization and participation in activity of such organization,terrorism
+interpol-red-2019-68988,participation in the activity of a terrorist organization,terrorism
+interpol-red-2019-36437,"""participation in illegal armed formation; participation in terrorist organisation; training for implementation of terrorist activity""",terrorism
+interpol-red-2019-37792,participation in the activity of a terrorist organization,terrorism
+NK-gQgxZLEfM7AcxwL2ZHZeRK,getting trained with the aim of terrorist activityy,terrorism
+interpol-red-2017-129702,participation in the activity of terrorist organization.,terrorism
+interpol-red-2016-91663,"""participation in the activity of terrorist organization.
+participation in illegal armed formation.""",terrorism
+interpol-red-2020-11021,"""participation in activity of a terrorist organization; participation in illegal armed formation.""",terrorism
+interpol-red-2019-14340,terrorist organizations,terrorism
+interpol-red-2021-66589,organization of activity of the terrorist organization and participation in activity of such organization. participation in illegal armed formation.,terrorism
+interpol-red-2016-72849,participation in terrorist organization,terrorism
+interpol-red-2016-78351,"participation in illegal armed formation, participation in the activity of a terrorist organization, getting trained with the aim of terrorist activity",terrorism
+interpol-red-2016-68803,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation, getting trained with the aim of terrorist activity""",terrorism
+interpol-red-2018-48535,participation in the activity of a terrorist organization,terrorism
+interpol-red-2017-6954,"""1) getting trained for terrorist activity; 2) participation in terrorist organization; 3) participation in illegal armed formation""",terrorism
+interpol-red-2017-281870,assistance to terrorist activity - participation in the activity of a terrorist organization,terrorism
+interpol-red-2021-5601,participation in a terrorist organization. participation in an illegal armed formation.,terrorism
+interpol-red-2017-234448,"participation in the activity of an illegal armed formation, participation in the activity of a terrorist organization, financing of terrorist activity, assistance to terrorist activity",terrorism
+interpol-red-2018-56877,"""participation in the activity of a terrorist organization; participation in the activity of an illegal armed formation""",terrorism
+interpol-red-2017-132697,participation in terrorist organisation,terrorism
+interpol-red-2018-66972,terrorist organizations,terrorism
+interpol-red-2013-69334,murder,homicide
+interpol-red-2023-40388,kidnapping and murder,homicide
+interpol-red-2016-38306,murder,homicide
+interpol-red-2018-11650,murder,homicide
+interpol-red-2012-314594,murder,homicide
+interpol-red-2015-53062,murder,homicide
+interpol-red-2025-66566,murder & attempted murder,homicide
+interpol-red-2007-40818,murder,homicide
+interpol-red-2016-18217,"murder, attempted murder, illicit association.",homicide
+interpol-red-2023-42686,murder,homicide
+interpol-red-2015-32885,murder,homicide
+interpol-red-2010-39461,aggravated homicide in homogeneous and successive competition.,homicide
+interpol-red-2023-64410,murder,homicide
+interpol-red-2017-198817,aggravated homicide,homicide
+interpol-red-1997-2133,murder,homicide
+interpol-red-2018-84066,murder,homicide
+interpol-red-2017-279328,aggravated homicide,homicide
+interpol-red-2021-27700,"""1) aggravated homicide
+2) aggravated terrorist organizations""",homicide
+interpol-red-2014-36133,"offence of robbery, offence of murder",homicide
+interpol-red-2019-21264,murder,homicide
+interpol-red-2018-82558,murder,homicide
+interpol-red-2005-17278,murder,homicide
+interpol-red-2014-60644,murder,homicide
+interpol-red-2016-60269,homicide,homicide
+interpol-red-2015-64045,murder,homicide
+interpol-red-2018-18368,aggravated homicide,homicide
+interpol-red-2009-26330,murder,homicide
+interpol-red-2023-30311,murder,homicide
+interpol-red-2022-46687,aggravated homicide,homicide
+interpol-red-2018-62801,murder,homicide
+interpol-red-2011-49607,misappropriation by fraud in especially large scale,financial crime
+interpol-red-2016-2384,"fraud, attempt of bribe-giving",financial crime
+interpol-red-2010-102,"embezzlement, fraud, misappropriation of pkr: 37,78,84,000/-",financial crime
+interpol-red-2006-24592,"fraud, organization in a criminal community",financial crime
+interpol-red-2011-40636,large scale fraud and attempt on large scale fraud,financial crime
+interpol-red-2018-16025,misappropriation or embezzlement in extremely large-scale,financial crime
+interpol-red-2010-15616,"especially large scale fraud committed by an organized group, participation in a criminal organization.",financial crime
+interpol-red-2014-74522,"fraud, misappropriation",financial crime
+interpol-red-2013-8985,extremely large-scale misappropriation by fraud,financial crime
+interpol-red-2006-24592,"fraud, organization in a criminal community",financial crime
+interpol-red-2003-45278,large-scale embezzlement,financial crime
+interpol-red-2017-271991,extremely large scale fraud,financial crime
+interpol-red-2024-13278,"""insurance fraud, committed by a group of persons by prior agreement.
+insurance fraud, committed by an organized group.
+attempted insurance fraud.
+petty bribery.
+extortion, committed by a group of persons by prior agreement on a large scale.
+extortion, committed by a group of persons by prior agreement on a particularly large scale.
+arbitrariness with the use of violence.""",financial crime
+interpol-red-2014-71916,"creation of criminal organization, large scale fraud",financial crime
+interpol-red-2022-53790,attempt of extremely large scale fraud,financial crime
+interpol-red-2010-9825,fraud,financial crime
+interpol-red-2013-42277,"own fraud, whoever commits fraud by misleading another beggar by trick or deception will defraud him of his assets.",financial crime
+interpol-red-2023-83654,swindling by a person through his official position with the infliction of extremely large scale damage (2 episodes),financial crime
+interpol-red-2010-38161,extremely large scale fraud,financial crime
+interpol-red-2012-340120,extremely large-scale misappropriation by fraud,financial crime
+interpol-red-2016-23323,"setting up an organized criminal group, smuggling, money laundering, circulating of products with the brand as trademark ones, which create prejudice to the owner of the trademark products, instigation to intellectual fraud and forgery to a private written agreement",financial crime
+interpol-red-2018-57775,complicity in fraud,financial crime
+interpol-red-2003-11390,"large-scale embezzlement, blackmail, theft, damage of documents - -",financial crime
+interpol-red-2014-26427,fraud,financial crime
+interpol-red-2015-85409,extremely large scale fraud  (22 episodes),financial crime
+interpol-red-2013-7981,misappropriation by fraud in especially large scale,financial crime
+interpol-red-2016-70097,advance fee fraud and other fraud related offences.,financial crime
+interpol-red-2017-255194,large scale bribe-taking by a functionary,financial crime
+interpol-red-1998-20764,fraud and misappropriation,financial crime
+interpol-red-2016-15777,transportation of narcotics,narcotics
+interpol-red-2017-162996,transportation of psychotropic narcotics and other controlled substances,narcotics
+interpol-red-2013-16947,traffick in drugs,narcotics
+interpol-red-2015-37499,"""1)illegal sale of narcotic drugs in considerable amount;
+2)preparation for illegal sale of narcotic drugs in considerable amount;
+3)preparation for illegal sale of narcotic drugs in large amount""",narcotics
+interpol-red-2021-48604,"illicit trafficking, in continuous mode.",narcotics
+interpol-red-2017-188099,narcotics smuggling,narcotics
+interpol-red-2023-61645,"offense related to narcotic drugs and psychotropic substances act, 1985 & possessing illegal weapon",narcotics
+interpol-red-2016-41983,"""1) organization of attempted illegal drug sale (8 crimes); 2) narcotic drugs smuggling (2 crimes); 3)  organization of narcotic drugs smuggling""",narcotics
+interpol-red-2015-29054,"dealing in narcotic and psychotropic substances. - cheating, forgery, forgery of documents, use of forged documents, narcotic drugs and psychotropic substances act.",narcotics
+NK-gQ9gwqAWpdat6RdFBLq4KZ,"participation in a criminal organisation, illicit trafficking in narcotic drugs and psychotropic substances - forgery of administrative documents,participation in a criminal organization, fencing stolen goods of large value",narcotics
+interpol-red-2017-192632,"integrating an illicit association dedicated to the transportation of narcotics, aggravated by the participation of three or more organized people.",narcotics
+interpol-red-2012-306719,attempt of illegal sale of narcotic drugs committed by a group of persons in a preliminary conspiracy with regard to large amounts of narcotic drugs.,narcotics
+interpol-red-2020-37251,"qualified smuggling because it involves narcotics unequivocally destined to be marketed, aggravated by the number of people involved and by the use of a means of air transport on an unauthorized flight, in actual competition with the crime of attempted transportation of narcotics.",narcotics
+interpol-red-2019-59291,smuggling of imported narcotics aggravated to an attempted level.,narcotics
+interpol-red-2017-131907,"illicit association dedicated to narcotic smuggling, aggravated by the participation of two or more organized people, by the quantity of narcotics and by the amount of merchandise.",narcotics
+interpol-red-2017-199024,"money laundering, trafficking in psychotropic narcotics and other controlled substances, international modality.",narcotics
+NK-BzVSaBLnr4CCKibruzEqiW,"""illicit production, processing of, trafficking or trading in narcotic drugs, precursors, narcotic replacement drugs and psychotropic substances; participation in a criminal organisation or an association designed to commit crimes""",narcotics
+interpol-red-2012-321306,illegally trading narcotic drug and organizing illegal use of narcotic drug,narcotics
+interpol-red-2010-18591,illegal storage of narcotic drugs,narcotics
+interpol-red-2022-81321,"""violating the narcotic drugs act (law of 12 february 1998 laying down the law on narcotic drugs, as it reads after amendments made to it)
+participation in criminal organization (art.188 surinamese criminal code)""",narcotics
+interpol-red-2013-65314,illegal trading in narcotic drugs,narcotics
+interpol-red-2009-18185,possession of narcotic drugs,narcotics
+interpol-red-2010-1482,illegal transportation of narcotic drugs,narcotics
+NK-Zf3qsnbW5ppcrmcYLvErBL,"illicit manufacture, processing and smuggling of narcotic drugs, precursors, substitute substances or psychotropic substances or trafficking in them, participation in a criminal organisation or union aiming at committing offences",narcotics
+interpol-red-2017-126587,"creation of a criminal community (criminal organization) and participation therein, smuggling narcotic agents, psychotropic substances, precursors and analogues thereof, plants containing narcotic agents, psychotropic substances or their precursors, or parts thereof containing narcotic agents, psychotropic substances or their precursors, instruments or equipment which are under special control and are used for making narcotic agents or psychotropic substances, illegal making, sale or dispatch of narcotic drugs, psychotropic substances or analogues thereof, as well as illegal sale or dispatch of plants containing narcotics or psychotropic substances, or parts thereof containing narcotics or psychotropic substances",narcotics
+interpol-red-2015-52541,"""1) producing, processing acquiring and keeping of narcotic substances without a due permit; 2) offence against the customs regime""",narcotics
+NK-bmxxtNC9bobBjekfF78LLX,"illegal trafficking in narcotic drugs, non-paying alimony",narcotics
+interpol-red-2023-44256,trafficking of controlled substances,narcotics
+interpol-red-2020-37259,"qualified smuggling because it involves narcotics unequivocally destined to be marketed, aggravated by the number of people involved and by the use of a means of air transport on an unauthorized flight, in actual competition with the crime of attempted transportation of narcotics.",narcotics
+interpol-red-2017-190800,organized crime and illegal transportation of psychotropic narcotics and other controlled substances (international),narcotics
+interpol-red-2016-27127,"participation in an illegal armed formation,",armed formation
+interpol-red-2019-53357,participation in illegal armed formation,armed formation
+interpol-red-2017-168411,participation in illegal armed formation,armed formation
+interpol-red-2017-189167,participation in illegal armed formation.,armed formation
+interpol-red-2016-64396,participation in illegal armed formation.,armed formation
+interpol-red-2014-63331,"""robbery; banditry; illegal acquisition, transfer, storage, transportation or bearing of firearms, explosives and explosive devices""",weapons
+interpol-red-2016-13421,participation in illegal armed formation,armed formation
+interpol-red-2018-67194,participation in an armed formation,armed formation
+interpol-red-2017-6019,participation in illegal armed formation,armed formation
+interpol-red-2016-50548,participation in an illegal armed formation,armed formation
+interpol-red-2016-56515,kidnapping for ransom and possession of a weapon without proper legal authorization,weapons
+interpol-red-2017-286866,participation in the activity of an illegal armed formation,armed formation
+interpol-red-2018-41419,participation in the activity of an illegal armed formation,armed formation
+interpol-red-2015-74706,participation in illegal armed formation,armed formation
+interpol-red-2021-59885,"participation in illegal armed formation, partici[ation in the activity of a terrorist organization",armed formation
+interpol-red-2017-191991,partisipation in illegal armed formation,armed formation
+NK-NK8HmYVgnTSXbRb7q9TDPM,participation in an illegal armed formation,armed formation
+interpol-red-2017-7860,participation in illegal armed formation.,armed formation
+interpol-red-2016-40144,participation in illegal armed formation.,armed formation
+interpol-red-2018-68558,participation in the activity of an  illegal armed formation,armed formation
+interpol-red-2016-61919,participation in illegal armed formation,armed formation
+interpol-red-2015-67756,participation in illegal armed formation.,armed formation
+interpol-red-2005-19818,aggravated murder and illegal possession of weapons,homicide
+interpol-red-2017-3795,participation in the activity of an illegal armed formation,armed formation
+interpol-red-2016-38373,participation in illegal armed formation.,armed formation
+interpol-red-2012-321943,participation in illegal armed formation and illegal possession or usage of firearms/explosive devices,armed formation
+interpol-red-2016-4563,participation in an illegal armed formation,armed formation
+interpol-red-2018-89585,voluntarily causing grievous hurt by dangerous weapons or means,weapons
+interpol-red-2021-27620,participation in the activity of an illegal armed formation,armed formation
+interpol-red-2021-68793,"transfer and reception of minors for the purposes of sexual exploitation aggravated by the participation of three or more people, as co-authors",sexual crime
+interpol-red-2000-7936,"infliction of damage on property by abuse of trust, abuse of official powers, money laundering",financial crime
+interpol-red-2017-282276,terrorist organizations and aggravated extortion,terrorism
+interpol-red-2012-302610,"""1) aggravated rape of a child 
+2) rape of a child with force  
+3) indecent assault and battery of a child under 14""",sexual crime
+interpol-red-2011-63180,"""1) sexual battery on a person less than 12 years of age (2 counts)
+2) lewd or lascivious molestation
+3) lewd or lascivious battery""",sexual crime
+interpol-red-2025-82424,"""1 - rape
+
+2 - assault by penetration
+
+3 - defilement of a girl under sixteen""",sexual crime
+interpol-red-2012-307783,aggravated sexual assault of a child - sexual assault of a child under 17 years of age,sexual crime
+interpol-red-2018-61334,sexual assault on a minor or incapable,sexual crime
+interpol-red-2014-41255,rape against minor,sexual crime
+NK-UBQxaRmgU8thVjnJJuW5QY,"""1) murder 
+2) felony murder while committing cruelty to children in the first degree, by inflicting blunt force against a child
+3) felony murder while committing cruelty to children in the second degree, by failing to seek medical attention for a child
+4) felony murder while committing aggravated assault
+5) cruelty to children in the first degree, by inflicting blunt force against a child
+6) cruelty to children in the second degree, by failing to seek medical attention for a child
+7) aggravated assault""",homicide
+interpol-red-2024-24034,"""aggravated fraud
+aggravated money laundering""",financial crime
+interpol-red-2009-40603,"""1) rape of an unconscious victim (2 counts)
+2) involuntary deviate sexual intercourse with an unconscious victim (1 count)
+3) sexual assault (2 counts)
+4) indecent assault with an unconscious victim (2 counts)
+5) indecent assault without victim consent (2 counts)""",sexual crime
+interpol-red-2011-24302,sexual assault,sexual crime
+interpol-red-2014-55661,violent sexual against minors,sexual crime
+interpol-red-2006-13929,"""criminal sexual conduct, 3rd degree - sexual penetration with a female 13-16 years old when the perpetrator is more than 4 years older than the victim ; b) criminal sexual conduct, 3rd degree - sexual penetration with a juvenile female knowing the juvenile was physically helpless - criminal sexual conduct, 2nd degree (2 counts)""",sexual crime
+interpol-red-2021-42532,""". scam 
+. misuse of the property or credit of an SARL by a manager for personal purposes.""",financial crime
+interpol-red-2018-90382,complicity in the use by an official of his official postion contrary to the interests of the service,financial crime
+interpol-red-2017-280668,terrorist organizations and aggravated extortion,terrorism
+interpol-red-2011-36373,"""- fraud carried out by an organized gang 
+- organized gang laundering""",financial crime
+NK-ig8f4sk9dmiB8drTM2tMGj,"sexual offence, rape",sexual crime
+interpol-red-2025-86779,"""scam carried out by an organized gang
+
+laundering: participation in a placement operation, concealment or
+conversion of the proceeds of a fraud committed by an organized gang
+
+participation in a criminal conspiracy with a view to preparing an offense punishable by 10 years of imprisonment.""",financial crime
+interpol-red-2023-72726,"gross fraud, gross money laundering offence",financial crime
+NK-86nZDZ9rTG3HArZXyNyDqZ,"""(1) criminal sexual conduct, 1st degree (2 counts);  
+(2) criminal sexual conduct, 4th degree (force or coercion) (5 counts)""",sexual crime
+interpol-red-2013-70296,"""1) rape of juvenile (under 14 years old), committed with threat of violence (3 episodes);
+2) violent sexual actions, committed with threat of violence  against obvious juvenile.""",sexual crime
+interpol-red-2023-14388,"""participating in a criminal organization, forgery, embezzlement and swindling (art. 188; 278; 381 and 386 of the suriname penal code), violation of art. 2 and 3 of the prevention of smuggling act, art. 16; 44; 45 and 52 of the forest management act, art. 1; 3 and 7 of the timber export act, art. 4 and 7 of the timber export duty act in conjunction with art. 1 paragraph 1 under 20; 24; 25 and 26 and art. 2; 3 and 4 of the economic offences act.""",financial crime
+interpol-red-2025-24848,"""- fraud carried out by an organized gang
+- attempted fraud carried out by an organized gang
+- money laundering: assistance with an investment operation, concealment or
+conversion of the proceeds of a fraud committed by an organized gang
+
+- participation in a criminal conspiracy with a view to preparing a crime
+punished by 10 years of imprisonment.""",financial crime
+interpol-red-2012-333743,"""1) predatory sexual assault against a child (8 counts)
+2) criminal sexual act in the first degree (4 counts)
+3) use of a child in a sexual performance as a sex motivated felony (8 counts)
+4) rape in the first degree (4 counts)
+5) sex abuse in the first degree 
+6) possessing a sexual performance by a child (100 counts)""",sexual crime
+interpol-red-2012-3032,intentionally inflicting injury on or causing harm to the health of other persons,assault
+interpol-red-2019-32367,"""1. punishment for murder
+2. punishment for culpable homicide not amounting to murder""",homicide
+Q4235170,perpetration of an explosion,weapons
+interpol-red-2014-6986,"murder, intentional infliction a grave injuries to a health.",homicide
+interpol-red-2002-4162,"criminal conspiracy, murder, attempted murder, terrorism, possession of illegal arms, causing explosion with intent to endanger life and property - criminal conspiracy, murder, attempted murder, damaging public property using explosives, possession of prohibited weapons and terrorist activities",terrorism
+interpol-red-2017-281576,hooliganism by a group of people,assault
+interpol-red-2017-4838,counterfeit currency,financial crime
+interpol-red-2004-41980,"assault, hooliganism, damage of property, involvement of a minor in the commission of a crime,",assault
+interpol-red-2011-38657,conspiracy to possess with intent to distribute in excess of 5 kilograms of cocaine,narcotics
+interpol-red-2014-29434,"conspiracy to trade, illicit trafficking and storage, forced disappearance, obstruction of justice.",narcotics
+interpol-red-2004-25243,"criminal conspiracy, murder, attempted murder, kidnapping, damaging public property using explosives, cheating, extortion, threatening behaviour, causing serious bodily injury, resisting a police officer, forgery of document, aiding and abetting a criminal, unlawful imprisonment, possession of prohibited weapons and terrorist activities. - criminal conspiracy, murder, attempted murder, kidnapping, damaging public property using explosives, cheating, extortion, threatening behaviour, causing serious bodily injury, resisting a police officer, forgery of document, aiding and abetting a criminal, unlawful imprisonment, possession of prohibited weapons and terrorist activities",homicide
+interpol-red-2016-74272,"robbery or dacoity, with attempt to cause death or grievous hurt, assault or criminal force to deter public servant from discharge of his duty, attempt to murder, punishment for theft, criminal conspiracy, acts done by several persons in furtherance of common intention, penalties for trespass or damange in reserved forest and acts prohibited in such forest, any person who causes any damage, either willfully or negligently in felling or cutting any trees or dragging any timber, power to make rules to regulate the transit possession of timber and other forest produce, mischief causing damage to public property, condition for import, export and movement of sandal wood or red sanders wood.",assault
+interpol-red-2013-52034,"""1) between december 14, 2008 and april 23, 2009, at or near
+niamey, niger and elsewhere in niger and mali, did take robert fowler hostage for the benefit or, at the direction of or in association with a terrorist group. 2) between december 14, 2008 and april 23, 2009, at or near niamey, niger and elsewhere in niger and mali, did take louis guay hostage for the benefit or, at the direction of or in association with a terrorist group""",terrorism
+interpol-red-2011-12659,murder (2 counts) - assault and battery - injury causing death/ manslaughter,homicide
+interpol-red-2012-314015,property robbery,assault
+interpol-red-2010-44010,"under sections 302, 307, 325, 326, 364, 343, 353, 332, 419, 427, 121, 121(a), 122, 333, 435, 397, 465 of indian penal code - criminal conspiracy, waging war against country , member of terrorist gang/ organisation.",terrorism
+NK-LWpMLqQDjqEx69xHxii7Ps,illicit trafficking,narcotics
+interpol-red-2004-2676,"murder, attempt to commit murder, conspiracy, damaging public property by using explosives, possession of prohibited arms, committing a terrorist act",homicide
+interpol-red-2016-53665,"""1.punishment of criminal conspiracy u/s 120b indian penal code,
+2.waging, or attempting to wage war, or abetting waging of war, against the government of india u/s 121 indian penal code , 
+3.conspiracy to commit offences punishable by section 121 u/s 121a indian penal code,
+4.punishment for murder u/s 302 indian penal code, 
+5.attempt to murder u/s 307 indian penal code, 
+6.punishment for terrorist act u/s 16 unlawful activities(prevention)act 1967,
+7.punishment for being member of terrorist gang or organization u/s 20 unlawful activities(prevention)act 1967,
+8.punishment for certain offences  u/s 25 arms act 1959 ,
+9.punishment for possessing arms, etc., with intent to use them for unlawful purpose u/s 27 arms act 1959,
+10.punishment for making or possessing explosives under suspicious circumstances u/s 5 explosives substance act 1908.""",terrorism
+interpol-red-2014-58914,"conspiracy, abetment for printing, distribution and possession of counterfeit/fake indian currency notes. cheating and forgery. illegal entry and stay in india",financial crime
+interpol-red-2012-315350,illegally trade in narcotics,narcotics
+interpol-red-2012-329910,"criminal conspiracy, waging war against country, punishment for terrorist act, member of terrorist gang/ organisation.",terrorism
+interpol-red-2015-25643,"""conspiracy to commit forgery, counterfeiting an official seal,
+aggravated fraud, receiving stolen goods, fraudulent bankruptcy, financial offences, slander.""",financial crime
+interpol-red-2012-315552,illegally trading in narcotics,narcotics
+interpol-red-2019-128415,"""under indian penal code, 1860:
+section 121: waging of attempting to wage war, or abetting the waging of war, against the government of india.
+section 121-a conspiring to commit certain offences against the state section 120-b: punishment of criminal conspiracy.
+
+under unlawful activities(prevention) act, 1967:
+section 10 penalty for being member of an unlawful etc. association,
+section 13 punishment for unlawful activities. 
+section 15 terrorist act.
+section 16 : punishment for terrorist act. 
+section 17: punishment for raising funds for terrorist act.
+section 18: punishment for conspiracy, etc. 
+
+under the arms act, 1959:
+punishment for certain offences.""",terrorism
+interpol-red-2006-18198,"""criminal conspiracy;  terrorist acts;  murder;  attempted murder;  dacoity;  incitement to communal hatred;  disrupting railway traffic;  damaging public property by assaulting and setting fire to a train.""",terrorism
+interpol-red-2018-34596,"""punishment for certain offences— whoever manufactures, sells, transfers, converts, repairs, tests or proves, or exposes or offers for sale or transfer, or has in his possession for sale, transfer, conversion, repair, test or proof, any arms; punishment for raising funds for terrorist act; punishment for conspiracy; punishment for being member of terrorist gang or organisation.""",terrorism
+NK-ASgzXkxhWYtMZikD6AVGcG,participation in illegal armed formation,armed formation
+NK-Y8dvx5wPUxo5HxB4uKx3Pu,participation in illegal armed formation,armed formation
+interpol-red-2016-68538,participation in an illegal armed formation,armed formation
+interpol-red-2019-47970,participation in illegal armed formation,armed formation
+interpol-red-2009-25033,"""participation in criminal community; 
+participation in a stable armed group; attempted murder; murder; 
+encroachment on the life of an officer of a law-enforcement agency (3 episodes); 
+illegal acquisition, transfer, sale, storage, transportation, or bearing of firearms, its basic parts, ammunition, explosives, and explosive devices.""",armed formation
+interpol-red-2017-173428,participation in illegal armed formation.,armed formation
+interpol-red-2018-31018,participation in illegal armed formation,armed formation
+interpol-red-2017-172816,participation in illegal armed formation,armed formation
+interpol-red-2017-163638,participation in an illegal armed formation,armed formation
+interpol-red-2019-38437,particpation in an illegal armed formation,armed formation
+interpol-red-2020-51250,participation in an illegal armed formation,armed formation
+interpol-red-2021-65344,participation in the activity of an illegal armed formation,armed formation
+interpol-red-2018-55124,participation in illegal armed formation,armed formation
+interpol-red-2016-71159,"trafficking in high risk drugs, attempt to international traffick of high risk drugs",narcotics
+interpol-red-2021-55899,participation in illegal armed formation,armed formation
+interpol-red-2017-168405,participation in illegal armed formation,armed formation
+interpol-red-2018-76585,participation in illegal armed formation,armed formation
+interpol-red-2015-41978,participation in illegal armed  formation (2 episodes),armed formation
+interpol-red-2022-79816,"""the attempted murder committed by a group of persons by previous concert; 
+illegal acquisition, transfer, storage, transportation or bearing of firearms and its basic parts.""",armed formation
+interpol-red-2020-68978,"""attempt at murder, illegal acquisition, storage, transportation of firearms and its basic parts; vandalism; participation in  illegal armed formation; participation in terrorist organization.""",armed formation
+interpol-red-2017-188956,participation in illegal armed formation,armed formation
+interpol-red-2016-74588,participation in illegal armed formation,armed formation
+interpol-red-2017-135459,participation in the activity of an illegal armed formation,armed formation
+interpol-red-2016-49585,participation in illegal armed formation.,armed formation
+interpol-red-2017-163644,participation in illegal armed formation,armed formation
+interpol-red-2015-41982,participation in illegal armed  formation (2 episodes),armed formation
+interpol-red-2019-111406,participation in illegal armed formation.,armed formation
+interpol-red-2017-132711,"""participation in the activity of an armed formation;""",armed formation
+interpol-red-2021-37726,participation in illegal armed formation,armed formation
+interpol-red-2015-18608,participation in an illegal armed formation,armed formation
+interpol-red-2023-42211,rape of a minor or incapacitated child,sexual crime
+interpol-red-2016-19999,violent actions of sexual character against minors,sexual crime
+interpol-red-2016-91107,sexual abuse,sexual crime
+interpol-red-2024-35331,wounding with intent,assault
+interpol-red-2013-44068,"""1) assault in the second degree causing serious physical injury
+2) assault in the third degree causing physical injury to a child 10 years or younger (2 counts)
+3) criminal mistreatment in the first degree by a person responsible for supervision over a dependent person causing physical injury (2 counts)
+4) criminal mistreatment in the first degree by a person responsible for supervision over a dependent person withholding necessary and adequate medical attention (2 counts)
+5) criminal mistreatment in the first degree by a person responsible for supervision over a dependent person withholding necessary and adequate food""",assault
+interpol-red-2015-72639,complicity to aggravated robbery followed by the victim’s decease,assault
+interpol-red-2012-333743,"""1) predatory sexual assault against a child (8 counts)
+2) criminal sexual act in the first degree (4 counts)
+3) use of a child in a sexual performance as a sex motivated felony (8 counts)
+4) rape in the first degree (4 counts)
+5) sex abuse in the first degree 
+6) possessing a sexual performance by a child (100 counts)""",sexual crime
+interpol-red-2009-24002,"disorderly conduct, damaging of another's property, attack of an law enforcement officer",assault
+interpol-red-2005-35455,"""unlawful flight to avoid confinement (federal charge - one count) - (1) predatory criminal sexual assault of a child less than 13 years old;  
+(2)  aggravated criminal sexual abuse of a child less than 13 years old - violation of bail bond;""",sexual crime
+interpol-red-2016-61605,"criminal code of canada - sexual assault (x2) 271c.c., forcible confinement (x2) 279(2) c.c, sexual interference (x2) c.c. 151, invitation to sexual touching c.c. 152. seven charge in all.",sexual crime
+interpol-red-2019-51727,seriously outrageous sexual abuse,sexual crime
+interpol-red-2015-21565,aggravated assault,assault
+NK-cuFXTQdyQ2DMacMnWJaegw,"rape, sexual use of dependency, sexual intercourse or another sexual act with a minor under 15 years of age",sexual crime
+interpol-red-2022-30281,"""- subtraction of child by ascendant
+- no representation of children""",sexual crime
+interpol-red-2010-42556,assault with robbery,assault
+interpol-red-2018-19983,"sexual abuse aggravated by its commission with carnal access and by being committed against a minor under eighteen years of age, taking advantage of the pre-existing cohabitation situation",sexual crime
+interpol-red-2022-35500,sexual assault with aggravated sentence,sexual crime
+interpol-red-2022-67202,"rape, girl, boy and adolescent with aggravating circumstances",sexual crime
+interpol-red-2016-12727,sexual abuse with carnal access aggravated by being to the detriment of a minor under eighteen years of age taking advantage of repeated cohabitation,sexual crime
+interpol-red-2019-77515,"""simple sexual abuse; seriously outrageous sexual abuse aggravated by being committed by the person in charge of guardianship and taking advantage of the pre-existing situation of coexistence in ideal competition with corruption of minors aggravated by the situation of pre-existing coexistence and sexual abuse with carnal access aggravated by being committed by the person in charge of guardianship and taking advantage of the pre-existing situation of coexistence in ideal competition with corruption of minors aggravated, all of which materially coincide with each other.""",sexual crime
+interpol-red-2015-4893,failure to comply with condition of recognizance - sexual assault,sexual crime
+interpol-red-2012-331038,intentional infliction of a grave injury what caused victim’s death.,assault
+interpol-red-2024-45644,rape,sexual crime
+interpol-red-2013-46051,rape using threats and violence against minor person,sexual crime
+interpol-red-2023-51107,rape of a 14 year old minor,sexual crime
+interpol-red-2019-92820,"sexual abuse with carnal access aggravated by being committed by the guardian and taking advantage of the pre-existing coexistence with a minor under 18 years of age, repeated.",sexual crime
+interpol-red-2023-41263,rape - sexual crimes,sexual crime
+interpol-red-2011-49663,"""1) robbery with use of a firearm and loss of property exceeding $2,500,000 (3 counts)
+2) assault with a deadly weapon with use of a firearm (3 counts)
+3) false imprisonment with use of a firearm (3 counts)
+4) terrorist threats with use of a firearm (3 counts)
+5) burglary 
+6) kidnapping to commit robbery or rape with use of a firearm (3 counts)
+7) assault with intent to commit rape (2 counts)
+8) sexual battery (2 counts)""",assault
+interpol-red-2021-68793,"transfer and reception of minors for the purposes of sexual exploitation aggravated by the participation of three or more people, as co-authors",sexual crime
+interpol-red-2017-173420,participation in illegal armed formation.,armed formation
+interpol-red-2017-234690,participation in illegal armed formation,armed formation
+interpol-red-1999-37978,terrorist attack and unlawful storage of explosives,terrorism
+interpol-red-2019-47972,participation in illegal armed formation,armed formation
+interpol-red-2016-14650,participation in illegal armed formation,armed formation
+interpol-red-2019-116885,participation in illegal armed formation,armed formation
+interpol-red-2024-52748,sexual assault,sexual crime
+interpol-red-2023-23517,"sexual assault on a minor and incapable, aggravated and continued",sexual crime
+interpol-red-2014-66413,aggravated sexual assault of a child under 14 - super aggravated sexual assault child of a under 6,sexual crime
+interpol-red-2023-57162,rape and other sexual assaults,sexual crime
+interpol-red-2002-44137,"illegal deprivation of liberty, aggravated by violence and threats and lasting more than one month",assault
+interpol-red-2020-16856,indecent assault,assault
+interpol-red-2015-49095,rape / sexual offences against minors,sexual crime
+interpol-red-2007-14648,"""(1) rape by foreign object
+(2) sexual battery - fraudulent professional purpose (6 counts)""",sexual crime
+interpol-red-2017-198569,criminal offence organising group and joining foreign paramilitary and parapolice groups  foreseen by art. 162 b section 2 in connection with section 1 of criminal code of bosnia and herzegovina.,armed formation
+interpol-red-2023-5369,sexual assault on a minor and incapable,sexual crime
+interpol-red-2012-325494,sexual assault of a child,sexual crime
+interpol-red-2015-82648,sexual assault,sexual crime
+interpol-red-2022-12828,rape of a minor or incapable in the form of a continued crime,sexual crime
+interpol-red-2015-22821,"aggravated homicide for having been committed within the framework of a relationship, with cruelty and mediating gender violence.",homicide
+interpol-red-2012-11227,"""1) rape by sexual intercourse and other sexual relation other than sexual intercourse of a minor under 12 years (stepdaughter) 
+2) sexual relation other than sexual intercourse with a minor under 15 years (stepdaughter) 
+3) sexual relation other than sexual intercourse with a minor under 18 years (stepdaughter) 
+4) rape by sexual intercourse and other sexual relation other than sexual intercourse with a minor under 12 years (daughter)""",sexual crime
+interpol-red-2017-195397,Violence against women in its physical manifestation in the private sphere.,sexual crime
+interpol-red-2017-16355,sexual abuse aggravated by having been committed with attempted carnal access,sexual crime
+interpol-red-2024-82528,"""repeated crimes of rape,
+repeated crimes of violent indecent assault
+repeated crimes of sexual abuse
+repeated crimes of sexual abuse especially
+all aggravated in a regime of real reiteration.""",sexual crime
+interpol-red-2019-40795,sexual abuse with carnal access,sexual crime
+interpol-red-2020-45966,"rape of a child, girl and teenager",sexual crime
+interpol-red-2015-45905,"aggravated murder, assault with robberry",homicide
+interpol-red-2005-52538,"""(1) aggravated sexual assault (three counts) 
+(2) aggravated sexual assault (two counts) 
+(3) indecency with a child (two counts) - (1) aggravated sexual assault (three counts)  
+(2) aggravated sexual assault (two counts)  
+(3) indecency with a child (two counts)""",sexual crime
+interpol-red-2008-28899,"""1) assault with a firearm; 2) attempted robbery with a firearm; 3) kidnapping to commit robbery with a firearm; 4) conspiracy to possess ephedrine for manufacturing with a firearm; 5) conspiracy to commit robbery with a firearm; 6) possession of cocaine for sale or transportation; 7) possession of cocaine; 8) possession of a firearm while under the influence of a controlled substance""",armed formation
+interpol-red-2013-47586,assault causing death,assault
+interpol-red-2016-90739,"1.punishment for murder, 2. attempt to murder, 3. waging, or attempting to wage war, or abetting waging of war, against government of india, 4. conspiracy to commit offences punishable by section 121 of indian penal code i.e. waging, or attempting to wage war, or abetting waging of war, against government of india, 5. assaulting the president, governor, etc. with the intent to compel or restrain the exercise of any lawful power, 6. wantonly giving provocation with intent to cause riot, 7. punishment for criminal conspiracy, 8. punishment for certain offences regarding illegal arms and ammunition, 9. punishment for conspiracy, etc. for terrorist act, 10. punishment for being member of terrorist gang or organization, 11. offence relating to membership of a terrorist organization,12. punishment for causing explosion likely to endanger life or property, 13. punishment for attempt to cause explosion, or for making or keeping explosive with intent to endanger life or property.",homicide
+Q101584196,"""murder, attempt to murder, causing hurt and grievous hurt to civilians and police personnel, kidnapping, wrongful confinement for three or more days, assault or criminal force to deter public servant from discharge of duties, voluntarily causing hurt, cheating by impersonation, mischief causing damage to the amount of fifty rupees, mischief by fire or explosive substance with intent to cause damage, robbery or dacoity, with attempt to cause death or grievous hurt, forgery, collecting arms with intention to waging war against the government of india. - 1. punishment for criminal conspiracy.
+2. waging or attempting to wage war, or abetting waging of war against the government of india.
+3. conspiracy to commit offences punishable by section 121 ipc.
+4. punishment for murder.
+5. forgery for the purpose of cheating.
+6. using forged documents as genuine.
+7. punishment for terrorist acts.
+8. punishment for conspiracy.
+9. punishment for being member of terrorist gang or organization.""",homicide
+interpol-red-2017-205073,war crime against civilians,terrorism
+interpol-red-2018-15750,crimes against humanity,terrorism
+interpol-red-2016-49704,intentional infliction of grave injury,assault
+interpol-red-2006-43395,"""(1) attempted aggravated murder (4 counts);  
+(2) rape in the first degree (3 counts);
+(3) unlawful sexual penetration in the first degree (3 counts)""",homicide
+interpol-red-2008-25902,"""1) lewd act on a child under 16 and more than 10 years younger than defendant (13 counts); 2) oral copulation with a person under 18 years of age (13 counts)""",sexual crime
+interpol-red-2019-41176,robbery,assault
+interpol-red-2012-330000,illegal deprivation of liberty and robbery,assault
+interpol-red-2020-48066,wounding with intent,assault
+interpol-red-2017-204158,extortive kidnapping,assault
+interpol-red-2011-49857,"""1) child molestation in the first degree (1 count) 
+2) rape of a child in the first degree (2 counts)""",sexual crime
+interpol-red-2015-84037,"""1) home invasion/cause injury
+2) home invasion/sexual offense
+3) criminal sexual assault""",assault
+interpol-red-2006-26997,"""(1) attempted rape (first degree);  
+(2) sexual abuse first degree (six counts)""",sexual crime
+NK-JfPeWS4bUawecxwoAVPgS9,rape; rape,sexual crime
+interpol-red-2025-58115,"""- rape
+- sexual assault
+- sexual harassment""",sexual crime
+interpol-red-2018-31861,"aggravated rape, aggravated robbery and terrorist organizations",terrorism
